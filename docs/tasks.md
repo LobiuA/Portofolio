@@ -10,9 +10,10 @@
 
 ## Backlog / ideas
 > Full debt register + phased plan: `docs/roadmap.md`. Dependency map: `docs/architecture.md`.
-- [ ] `git init` + first commit, then deploy to Vercel (mirror the VCT setup).
+- [ ] Push to GitHub (create remote, `git remote add origin …`, `git push -u origin main`) + deploy to Vercel (mirror the VCT setup).
 
 ## Done (recent — prune periodically)
+- [x] git init + initial commit on `main` (local identity: Tri Muhammad Jidan / jidantri14@gmail.com) — 2026-06-15
 - [x] Prune asset clutter (64 raw PNGs in public/work/ + 5 starter SVGs in public/) — build clean — 2026-06-15
 - [x] Delete dead code (framer-motion dep, useGsapReveal.ts, components/ui/, tailwind.config.ts) — build clean — 2026-06-15
 - [x] Fill all real contact links (email/WhatsApp/Instagram/Upwork) — 2026-06-15

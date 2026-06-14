@@ -5,7 +5,7 @@
 **Date:** 2026-06-15
 
 ## Project Overview
-Personal broadcast portfolio site for Tri Muhammad Jidan ("Broadcast & Livestream Operator"). Single scrolling page, content-driven. **Location:** `C:\Users\Desktop\portfolio-jidan\`. Not a git repo, not deployed yet.
+Personal broadcast portfolio site for Tri Muhammad Jidan ("Broadcast & Livestream Operator"). Single scrolling page, content-driven. **Location:** `C:\Users\Desktop\portfolio-jidan\`. Local git repo (`main`, initial commit) — not yet pushed to a remote, not deployed.
 
 ## Current Architecture (redesigned — was re-ported since the last handoff)
 - **Stack:** Next.js 16.2.9 (App Router, Turbopack) + React 19 + TypeScript + Tailwind CSS v4 (imported only) + Lenis + GSAP (ticker only). `framer-motion` is installed but **unused**.
@@ -21,10 +21,10 @@ Personal broadcast portfolio site for Tri Muhammad Jidan ("Broadcast & Livestrea
 - All images referenced in `lib/content.ts` exist in `public/work/`.
 
 ## Current Work In Progress
-- None active. This session: (1) synced all docs to the redesigned reality; (2) **filled real contact links** (email/WhatsApp/Instagram/Upwork — all live); (3) **deleted dead code** (`framer-motion` dep, `useGsapReveal.ts`, `components/ui/`, `tailwind.config.ts`); (4) **pruned asset clutter** (64 raw PNGs + 5 starter SVGs — `public/` now holds only the 58 used JPGs). `npm run build` clean throughout.
+- None active. This session: (1) synced all docs to the redesigned reality; (2) **filled real contact links** (email/WhatsApp/Instagram/Upwork — all live); (3) **deleted dead code** (`framer-motion` dep, `useGsapReveal.ts`, `components/ui/`, `tailwind.config.ts`); (4) **pruned asset clutter** (64 raw PNGs + 5 starter SVGs — `public/` now holds only the 58 used JPGs); (5) **`git init` + initial commit on `main`** (commit 29b1859; local identity Tri Muhammad Jidan / jidantri14@gmail.com). `npm run build` clean throughout.
 
 ## Pending Tasks
-See `docs/tasks.md`. Headline items: `next/image` optimization pass on the galleries; then `git init` + Vercel deploy.
+See `docs/tasks.md`. Headline items: push to GitHub + Vercel deploy; optional `next/image` optimization pass on the galleries.
 
 ## Important Decisions
 See `docs/decisions.md` (newest entries, 2026-06-15): look is hand-written CSS (supersedes the `@theme` ADR); UI state centralized in `PortfolioChrome`; reveal via IntersectionObserver not GSAP; dead code/deps removed (repo is now config-less for Tailwind — tokens in `:root`/`[data-theme]`).
@@ -37,8 +37,8 @@ See `docs/decisions.md` (newest entries, 2026-06-15): look is hand-written CSS (
 - `app/page.tsx` (tree/order) · `app/layout.tsx` (fonts/metadata) · `app/globals.css` (the whole design) · `lib/content.ts` (all content) · `components/PortfolioChrome.tsx` (state + reveal) · `components/SmoothScrollProvider.tsx` (Lenis) · `CLAUDE.md` (+ `AGENTS.md`).
 
 ## Next Recommended Actions
-1. `next/image` optimization pass on the galleries (currently plain `<img loading="lazy">`).
-2. `git init` + first commit, then deploy to Vercel (mirror the VCT setup).
+1. Push to GitHub (create remote → `git remote add origin …` → `git push -u origin main`), then import to Vercel (mirror the VCT setup).
+2. Optional: `next/image` optimization pass on the galleries (currently plain `<img loading="lazy">`).
 
 ## Context Required For Continuation
 - Node v24 at `C:\Program Files\nodejs\` (refresh PATH in new bash shells: `export PATH="$PATH:/c/Program Files/nodejs"`).
