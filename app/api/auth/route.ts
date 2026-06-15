@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export const runtime = 'nodejs'
 
 export async function GET(req: NextRequest) {
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID
+  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID?.trim()
   if (!clientId) {
     return new NextResponse('Missing GITHUB_OAUTH_CLIENT_ID env var', { status: 500 })
   }

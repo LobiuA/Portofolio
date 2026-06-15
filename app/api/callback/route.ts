@@ -6,8 +6,9 @@ export const runtime = 'nodejs'
 
 export async function GET(req: NextRequest) {
   const code = req.nextUrl.searchParams.get('code')
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID
-  const clientSecret = process.env.GITHUB_OAUTH_CLIENT_SECRET
+  // trim() guards against an accidental trailing space/newline pasted into the env var.
+  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID?.trim()
+  const clientSecret = process.env.GITHUB_OAUTH_CLIENT_SECRET?.trim()
 
   if (!code || !clientId || !clientSecret) {
     return new NextResponse('Missing code or OAuth env vars', { status: 400 })
