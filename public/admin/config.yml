@@ -3,7 +3,9 @@ backend:
   name: github
   repo: LobiuA/Portofolio
   branch: main
-  # base_url is added in Phase 2 (points to the GitHub OAuth proxy on Vercel).
+  # OAuth proxy = the site's own /api/auth + /api/callback serverless functions.
+  base_url: https://portofoliotmj.vercel.app
+  auth_endpoint: api/auth
 
 # Lets you test the dashboard locally (with the Sveltia proxy server) without any login.
 local_backend: true
