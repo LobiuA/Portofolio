@@ -1,0 +1,34 @@
+{
+  "kicker": "Career",
+  "heading": "Where I've been on the crew.",
+  "items": [
+    {
+      "when": "2020 — Present",
+      "active": true,
+      "role": "Freelance — Self-Employed",
+      "org": "Broadcasting · Esports production · Upwork",
+      "desc": "Crewing live broadcasts as in-game observer, league operation and encoder operator, plus remote vMix consulting for international clients through Upwork."
+    },
+    {
+      "when": "2024 — 2025",
+      "active": false,
+      "role": "Broadcast Assistant",
+      "org": "One Up Organizer",
+      "desc": "Supporting live tournament productions across replay, technical support, CG/graphics and audio — including Valorant Pacific and international Masters events."
+    },
+    {
+      "when": "2020 — 2022",
+      "active": false,
+      "role": "Broadcast Officer",
+      "org": "Ligagame Esports TV",
+      "desc": "Ran broadcast operations for talkshows, esports events and live e-commerce streams on TikTok, Shopee and Tokopedia."
+    },
+    {
+      "when": "2017 — 2020",
+      "active": false,
+      "role": "Computer & Network Engineering",
+      "org": "SMKN 1 Tangerang",
+      "desc": "Vocational diploma — the technical foundation behind my production and signal-flow work."
+    }
+  ]
+}

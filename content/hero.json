@@ -1,0 +1,24 @@
+{
+  "kicker": "Broadcast & Livestream Operator",
+  "nameLines": ["Tri Muhammad", "Jidan"],
+  "role": {
+    "pre": "I run the technical floor of ",
+    "accent": "live esports broadcasts",
+    "post": " — switching, graphics, audio & encoding."
+  },
+  "lede": "Five years on production crews behind Valorant, Mobile Legends, PUBG Mobile and Free Fire events — from regional qualifiers to international Masters stages.",
+  "cta": [
+    { "label": "View event work", "href": "#work", "primary": true },
+    { "label": "Get in touch", "href": "#contact", "primary": false }
+  ],
+  "headshot": "headshot",
+  "stats": [
+    { "n": "5", "plus": "+", "label": "Years in production" },
+    { "n": "30", "plus": "+", "label": "Events crewed" },
+    { "n": "4", "plus": "", "label": "Int'l stages" }
+  ],
+  "marquee": [
+    "vMix", "OBS Studio", "CG / GT Graphics", "Audio Operator",
+    "In-Game Observer", "Replay Operator", "Encoder", "League Operation"
+  ]
+}

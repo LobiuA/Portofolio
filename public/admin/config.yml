@@ -1,0 +1,239 @@
+# Sveltia CMS configuration — edits the JSON files in /content, committed back to GitHub.
+backend:
+  name: github
+  repo: LobiuA/Portofolio
+  branch: main
+  # base_url is added in Phase 2 (points to the GitHub OAuth proxy on Vercel).
+
+# Lets you test the dashboard locally (with the Sveltia proxy server) without any login.
+local_backend: true
+
+# Media library (for future image uploads). Image keys in content are stored as plain
+# filenames-without-extension (e.g. "toronto-1") and resolved by lib/content.ts.
+media_folder: "public/work"
+public_folder: "/work"
+
+collections:
+  - name: content
+    label: "Portfolio Content"
+    description: "Edit every section of the site. Changes save back to GitHub and auto-deploy."
+    files:
+      # ---------------- GENERAL ----------------
+      - name: general
+        label: "General · brand, nav, footer"
+        file: "content/general.json"
+        fields:
+          - { name: brand, label: Brand, widget: object, fields: [
+              { name: tag, label: "Logo tag", widget: string },
+              { name: label, label: "Logo label", widget: string } ] }
+          - name: nav
+            label: "Nav links"
+            widget: list
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: href, label: "Anchor (e.g. #about)", widget: string }
+          - { name: footer, label: Footer, widget: object, fields: [
+              { name: left, label: "Left text", widget: string },
+              { name: right, label: "Right text", widget: string } ] }
+
+      # ---------------- HERO ----------------
+      - name: hero
+        label: "Hero"
+        file: "content/hero.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: nameLines, label: "Name lines", widget: list, field: { name: line, label: Line, widget: string } }
+          - { name: role, label: "Role line", widget: object, fields: [
+              { name: pre, label: "Before accent", widget: string },
+              { name: accent, label: "Accent (highlighted) text", widget: string },
+              { name: post, label: "After accent", widget: string } ] }
+          - { name: lede, label: Lede, widget: text }
+          - name: cta
+            label: "Buttons"
+            widget: list
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: href, label: Link, widget: string }
+              - { name: primary, label: "Primary (filled) button?", widget: boolean, default: false }
+          - { name: headshot, label: "Headshot image key", widget: string, hint: "Filename in /public/work without .jpg (e.g. headshot)" }
+          - name: stats
+            label: "Stats"
+            widget: list
+            fields:
+              - { name: n, label: Number, widget: string }
+              - { name: plus, label: "Suffix (+, %, blank)", widget: string, required: false }
+              - { name: label, label: Label, widget: string }
+          - { name: marquee, label: "Marquee tags", widget: list, field: { name: tag, label: Tag, widget: string } }
+
+      # ---------------- ABOUT ----------------
+      - name: about
+        label: "About"
+        file: "content/about.json"
+        fields:
+          - { name: portrait, label: "Portrait image key", widget: string, hint: "Filename in /public/work without .jpg (e.g. about-portrait)" }
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: paras, label: "Paragraphs (HTML allowed)", widget: list, field: { name: text, label: Paragraph, widget: text } }
+          - { name: interestsLabel, label: "Interests label", widget: string }
+          - { name: chips, label: "Interest chips", widget: list, field: { name: chip, label: Chip, widget: string } }
+
+      # ---------------- SKILLS ----------------
+      - name: skills
+        label: "Skills"
+        file: "content/skills.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - name: tools
+            label: "Tools"
+            widget: list
+            fields:
+              - { name: glyph, label: Glyph, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: desc, label: Description, widget: string }
+          - name: meters
+            label: "Skill meters"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: level, label: Level, widget: string }
+              - { name: w, label: "Bar width (e.g. 90%)", widget: string }
+          - { name: roleTags, label: "Role tags", widget: list, field: { name: tag, label: Tag, widget: string } }
+
+      # ---------------- EXPERIENCE ----------------
+      - name: experience
+        label: "Experience"
+        file: "content/experience.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - name: items
+            label: "Timeline items"
+            widget: list
+            summary: "{{fields.role}} — {{fields.org}}"
+            fields:
+              - { name: when, label: "When", widget: string }
+              - { name: active, label: "Active (shows badge)?", widget: boolean, default: false }
+              - { name: role, label: Role, widget: string }
+              - { name: org, label: Organization, widget: string }
+              - { name: desc, label: Description, widget: text }
+
+      # ---------------- WORK / EVENTS ----------------
+      - name: work
+        label: "Events"
+        file: "content/work.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - name: gameFilters
+            label: "Game filters"
+            widget: list
+            fields:
+              - { name: val, label: "Value (id)", widget: string }
+              - { name: label, label: Label, widget: string }
+          - name: roleFilters
+            label: "Role filters"
+            widget: list
+            fields:
+              - { name: val, label: "Value (id)", widget: string }
+              - { name: label, label: Label, widget: string }
+          - name: events
+            label: "Events"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: event, label: "Gallery id (unique, no spaces)", widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: game, label: "Game (matches a game filter id)", widget: string }
+              - { name: roles, label: "Role ids (match role filters)", widget: list, field: { name: role, label: Role id, widget: string } }
+              - { name: year, label: "Year / location line", widget: string }
+              - { name: role, label: "Your role (display)", widget: string }
+              - { name: cover, label: "Cover image key", widget: string, hint: "Filename in /public/work without .jpg" }
+              - name: flags
+                label: "Badges"
+                widget: list
+                fields:
+                  - { name: label, label: Label, widget: string }
+                  - { name: live, label: "Highlighted (live) badge?", widget: boolean, default: false, required: false }
+              - { name: galleryTitle, label: "Gallery title (in lightbox)", widget: string }
+              - name: images
+                label: "Gallery photos"
+                widget: list
+                summary: "{{fields.src}}"
+                fields:
+                  - { name: src, label: "Image key", widget: string, hint: "Filename in /public/work without .jpg" }
+                  - { name: caption, label: Caption, widget: string }
+
+      # ---------------- FREELANCE ----------------
+      - name: freelance
+        label: "Freelance"
+        file: "content/freelance.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - name: stats
+            label: "Stats"
+            widget: list
+            fields:
+              - { name: n, label: Number, widget: string }
+              - { name: plus, label: Suffix, widget: string, required: false }
+              - { name: label, label: Label, widget: string }
+          - name: clients
+            label: "Clients"
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: event, label: "Gallery id (unique, no spaces)", widget: string }
+              - { name: name, label: "Client name", widget: string }
+              - { name: pin, label: "Pin tag (e.g. Client)", widget: string }
+              - { name: loc, label: "Location / subtitle", widget: string }
+              - { name: desc, label: Description, widget: text }
+              - { name: cover, label: "Cover image key", widget: string, hint: "Filename in /public/work without .jpg" }
+              - { name: galleryTitle, label: "Gallery title (in lightbox)", widget: string }
+              - name: images
+                label: "Gallery photos"
+                widget: list
+                summary: "{{fields.src}}"
+                fields:
+                  - { name: src, label: "Image key", widget: string }
+                  - { name: caption, label: Caption, widget: string }
+          - { name: testimonial, label: Testimonial, widget: object, fields: [
+              { name: quote, label: Quote, widget: text },
+              { name: stars, label: Stars, widget: string },
+              { name: cite, label: Citation, widget: string } ] }
+
+      # ---------------- LEDGER ----------------
+      - name: ledger
+        label: "Also Crewed (ledger)"
+        file: "content/ledger.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - name: rows
+            label: "Rows"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: idx, label: "Index (e.g. 01)", widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: meta, label: Meta, widget: string }
+
+      # ---------------- CONTACT ----------------
+      - name: contact
+        label: "Contact"
+        file: "content/contact.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: "Heading lines", widget: list, field: { name: line, label: Line, widget: string } }
+          - { name: sub, label: Subheading, widget: text }
+          - name: links
+            label: "Contact links"
+            widget: list
+            summary: "{{fields.lbl}}"
+            fields:
+              - { name: type, label: "Type (email/whatsapp/instagram/upwork)", widget: string }
+              - { name: lbl, label: Label, widget: string }
+              - { name: val, label: "Display value", widget: string }
+              - { name: href, label: Link, widget: string }

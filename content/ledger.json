@@ -1,0 +1,13 @@
+{
+  "kicker": "Also Crewed",
+  "heading": "More on the résumé.",
+  "rows": [
+    { "idx": "01", "title": "IESF World Championship", "meta": "2022 · International" },
+    { "idx": "02", "title": "Valorant Champions Tour — Split 2 Indonesia", "meta": "Valorant" },
+    { "idx": "03", "title": "FSL Game Changer SEA Championship", "meta": "2024 · SEA" },
+    { "idx": "04", "title": "Honor of Kings — Office Attack", "meta": "Honor of Kings" },
+    { "idx": "05", "title": "Honor of Kings — KIC PH Qualifier", "meta": "Honor of Kings" },
+    { "idx": "06", "title": "Dunia Games Championship — Free Fire", "meta": "2024 · Free Fire" },
+    { "idx": "07", "title": "PMVB Season 2", "meta": "2022 · PUBG Mobile" }
+  ]
+}

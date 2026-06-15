@@ -1,0 +1,165 @@
+{
+  "kicker": "Selected Events · 2020 — 2025",
+  "heading": "Productions I've been part of.",
+  "sub": "Filter by title and by the seat I operated. Click any event to open the full set of broadcast shots.",
+  "gameFilters": [
+    { "val": "all", "label": "All games" },
+    { "val": "valorant", "label": "Valorant" },
+    { "val": "mlbb", "label": "Mobile Legends" },
+    { "val": "pubg", "label": "PUBG Mobile" },
+    { "val": "freefire", "label": "Free Fire" },
+    { "val": "multi", "label": "Multi-title" }
+  ],
+  "roleFilters": [
+    { "val": "all", "label": "All roles" },
+    { "val": "observer", "label": "Observer" },
+    { "val": "league", "label": "League Op" },
+    { "val": "encoder", "label": "Encoder" },
+    { "val": "replay", "label": "Replay" },
+    { "val": "cg", "label": "CG / Graphics" },
+    { "val": "audio", "label": "Audio" },
+    { "val": "tech", "label": "Technical Support" }
+  ],
+  "events": [
+    {
+      "event": "toronto", "game": "valorant", "roles": ["cg"], "cover": "toronto-1",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
+      "year": "2025 · Canada", "title": "Valorant Masters Toronto", "role": "CG Operator · vMix",
+      "galleryTitle": "Valorant Masters Toronto 2025",
+      "images": [
+        { "src": "toronto-1", "caption": "Tournament key art — Toronto skyline" },
+        { "src": "toronto-2", "caption": "Showmatch — live in-game observer feed" },
+        { "src": "toronto-3", "caption": "Player reflection interview segment" },
+        { "src": "toronto-4", "caption": "Grand Final countdown — PRX vs FNC" }
+      ]
+    },
+    {
+      "event": "bangkok", "game": "valorant", "roles": ["audio"], "cover": "bangkok-1",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
+      "year": "2025 · Thailand", "title": "Valorant Masters Bangkok", "role": "Audio Operator",
+      "galleryTitle": "Valorant Masters Bangkok 2025",
+      "images": [
+        { "src": "bangkok-1", "caption": "Tournament key art — Bangkok skyline" },
+        { "src": "bangkok-2", "caption": "Crystal key art — Dawn of the Duelist" },
+        { "src": "bangkok-3", "caption": "Studio talkshow desk" },
+        { "src": "bangkok-4", "caption": "Showmatch scoreboard — Thailand vs International" }
+      ]
+    },
+    {
+      "event": "pacific", "game": "valorant", "roles": ["cg", "audio"], "cover": "pacific-1",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
+      "year": "2025 · Indonesia & Taiwan", "title": "VCT Pacific — Stage 1 & 2", "role": "CG & Audio Operator",
+      "galleryTitle": "VCT Pacific — Stage 1 & 2",
+      "images": [
+        { "src": "pacific-1", "caption": "Rise Pacific key art — Stage 1" },
+        { "src": "pacific-2", "caption": "Pacific studio talkshow desk" },
+        { "src": "pacific-3", "caption": "Stage 2 player interview" },
+        { "src": "pacific-4", "caption": "VCT Pacific Stage 2 ident" }
+      ]
+    },
+    {
+      "event": "m3", "game": "mlbb", "roles": ["encoder"], "cover": "m3-1",
+      "flags": [{ "label": "★ World", "live": true }, { "label": "MLBB" }],
+      "year": "MLBB World Championship", "title": "M3 World Championship", "role": "Stream Encoder Operator",
+      "galleryTitle": "M3 World Championship",
+      "images": [
+        { "src": "m3-1", "caption": "Grand Final analyst desk — To The Top" },
+        { "src": "m3-2", "caption": "World Championship Quickie segment" },
+        { "src": "m3-3", "caption": "Grand Final — ONIC PH player intro" }
+      ]
+    },
+    {
+      "event": "ascension", "game": "valorant", "roles": ["replay"], "cover": "asc-1",
+      "flags": [{ "label": "Valorant" }],
+      "year": "Pacific", "title": "Valorant Ascension Pacific", "role": "Replay Operator",
+      "galleryTitle": "Valorant Ascension Pacific",
+      "images": [
+        { "src": "asc-1", "caption": "Ascend to Greatness talkshow desk" },
+        { "src": "asc-2", "caption": "Replay Operator — broadcast credits" },
+        { "src": "asc-3", "caption": "In-game replay — spike carrier down" }
+      ]
+    },
+    {
+      "event": "predator", "game": "multi", "roles": ["tech"], "cover": "pred-1",
+      "flags": [{ "label": "Multi-title" }],
+      "year": "Indonesia", "title": "Pacific Predator League", "role": "Technical Support",
+      "galleryTitle": "Pacific Predator League",
+      "images": [
+        { "src": "pred-1", "caption": "Main stage — Tim Severine vs Tim Sleepy" },
+        { "src": "pred-2", "caption": "Indonesian Online Qualifiers — BO3" },
+        { "src": "pred-3", "caption": "Champions — Technical Support credits" },
+        { "src": "pred-4", "caption": "Group stage — Helios vs Nitro" },
+        { "src": "pred-5", "caption": "Predator main stage — wide" }
+      ]
+    },
+    {
+      "event": "arena", "game": "valorant", "roles": ["observer", "league"], "cover": "arena-1",
+      "flags": [{ "label": "Valorant" }],
+      "year": "Esports", "title": "Valorant Arena Showdown", "role": "Observer · League Operation",
+      "galleryTitle": "Valorant Arena Showdown",
+      "images": [
+        { "src": "arena-1", "caption": "Arena Showdown analyst desk" },
+        { "src": "arena-2", "caption": "In-game observer feed" }
+      ]
+    },
+    {
+      "event": "mpl", "game": "mlbb", "roles": ["encoder"], "cover": "mpl-1",
+      "flags": [{ "label": "MLBB" }],
+      "year": "2021 · ONE Esports", "title": "MPL Invitational", "role": "Encoder Operator",
+      "galleryTitle": "MPL Invitational 2021 — ONE Esports",
+      "images": [
+        { "src": "mpl-1", "caption": "Main stage" },
+        { "src": "mpl-2", "caption": "Analyst desk" },
+        { "src": "mpl-3", "caption": "Pick & ban — Ranger Frags vs Modochan" },
+        { "src": "mpl-4", "caption": "Players on stage" }
+      ]
+    },
+    {
+      "event": "pmpl", "game": "pubg", "roles": ["observer", "league"], "cover": "pmpl-1",
+      "flags": [{ "label": "PUBG Mobile" }],
+      "year": "2022 · Spring", "title": "PMPL & Pro League ID", "role": "Observer · League Operation",
+      "galleryTitle": "PMPL & PUBG Pro League Indonesia",
+      "images": [
+        { "src": "pmpl-1", "caption": "PMPL ID Spring — coming soon ident" },
+        { "src": "pmpl-2", "caption": "Grand Champions — ONIC G" },
+        { "src": "pmpl-3", "caption": "Caster desk — Sanskuy & Jelly" },
+        { "src": "pmpl-4", "caption": "Pro League Indonesia — Be The #1" }
+      ]
+    },
+    {
+      "event": "sukro", "game": "freefire", "roles": ["tech"], "cover": "sukro-1",
+      "flags": [{ "label": "Free Fire" }],
+      "year": "2024", "title": "Mas Sukro Cup — Free Fire", "role": "Technical Support",
+      "galleryTitle": "Mas Sukro Cup — Free Fire",
+      "images": [
+        { "src": "sukro-1", "caption": "Opening ceremony — main stage" },
+        { "src": "sukro-2", "caption": "Champions — Pandora Stars" },
+        { "src": "sukro-3", "caption": "In-game — MBCUP 2024 Grand Final" }
+      ]
+    },
+    {
+      "event": "pbnc", "game": "multi", "roles": ["tech", "audio"], "cover": "pbnc-1",
+      "flags": [{ "label": "Point Blank" }],
+      "year": "2025 · Indonesia", "title": "PBNC — National Championship", "role": "Technical Support — Audio",
+      "galleryTitle": "PBNC — Point Blank National Championship",
+      "images": [
+        { "src": "pbnc-1", "caption": "Talent desk" },
+        { "src": "pbnc-2", "caption": "Starting-soon countdown" },
+        { "src": "pbnc-3", "caption": "Broadcast credits — TS Audio: Jidan" },
+        { "src": "pbnc-4", "caption": "In-game — scope cam" }
+      ]
+    },
+    {
+      "event": "adrenalin", "game": "valorant", "roles": ["observer", "league"], "cover": "adr-1",
+      "flags": [{ "label": "Valorant" }],
+      "year": "S1 · S2 · S3", "title": "AMD Adrenalin Invitational", "role": "Observer · League Operation",
+      "galleryTitle": "AMD Adrenalin Valorant Invitational",
+      "images": [
+        { "src": "adr-1", "caption": "Season 1 — Main Event bracket" },
+        { "src": "adr-2", "caption": "Season 2 — Final Day" },
+        { "src": "adr-3", "caption": "Season 3 — show intro" },
+        { "src": "adr-4", "caption": "Season 3 — analyst desk" }
+      ]
+    }
+  ]
+}

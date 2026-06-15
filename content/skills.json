@@ -1,0 +1,22 @@
+{
+  "kicker": "Toolkit",
+  "heading": "The software and the seats I run.",
+  "sub": "Hands-on across the full live-production stack — switching, graphics, audio and encoding — plus the operating roles that keep a broadcast running.",
+  "tools": [
+    { "glyph": "vM", "name": "vMix", "desc": "Live switching · CG & GT graphics" },
+    { "glyph": "OBS", "name": "OBS Studio", "desc": "Live production & encoding" },
+    { "glyph": "SL", "name": "Streamlabs", "desc": "Streaming & overlays" },
+    { "glyph": "GW", "name": "Google Workspace", "desc": "Run-of-show & coordination" }
+  ],
+  "meters": [
+    { "name": "vMix & live graphics", "level": "Expert", "w": "95%" },
+    { "name": "OBS & encoding", "level": "Expert", "w": "90%" },
+    { "name": "Audio operation", "level": "Advanced", "w": "86%" },
+    { "name": "In-game observing & replay", "level": "Advanced", "w": "90%" },
+    { "name": "League operation", "level": "Advanced", "w": "84%" }
+  ],
+  "roleTags": [
+    "In-game Observer", "League Operation", "Encoder Operator", "Replay Operator",
+    "CG / Graphics Operator", "Audio Operator", "Technical Support", "vMix Consultant"
+  ]
+}

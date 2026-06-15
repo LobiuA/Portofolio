@@ -1,0 +1,51 @@
+{
+  "kicker": "Freelance · Upwork",
+  "heading": "Remote vMix & OBS consulting for clients abroad.",
+  "sub": "Building live graphics packages and advising on broadcast technical setups for international productions — with a 100% job-success record.",
+  "stats": [
+    { "n": "100", "plus": "%", "label": "Job success" },
+    { "n": "13", "plus": "", "label": "Jobs completed" },
+    { "n": "$700", "plus": "+", "label": "Total earned" },
+    { "n": "Rising", "plus": "", "label": "Upwork talent" }
+  ],
+  "clients": [
+    {
+      "event": "tachartas", "cover": "tach-1", "pin": "Client",
+      "name": "Tachartas Sports", "loc": "United Kingdom · Rugby streaming",
+      "desc": "vMix consultant — built the live graphics GT package and advised on the full broadcast technical setup for their YouTube sports channel.",
+      "galleryTitle": "Tachartas Sports — United Kingdom",
+      "images": [
+        { "src": "tach-1", "caption": "Live rugby — MER vs DOL" },
+        { "src": "tach-2", "caption": "YouTube channel — schools rugby coverage" },
+        { "src": "tach-3", "caption": "Merchiston Castle vs Dollar Academy — half time" },
+        { "src": "tach-4", "caption": "Commentary desk — George Watson's vs Dollar" }
+      ]
+    },
+    {
+      "event": "tnt", "cover": "tnt-1", "pin": "Client",
+      "name": "Mr. Nguyen Tuyen", "loc": "Orange County, California",
+      "desc": "Streaming & broadcast studio setup — created the graphic GT package and provided technical consultation for Tuyen News TV.",
+      "galleryTitle": "Tuyen News TV — California",
+      "images": [
+        { "src": "tnt-1", "caption": "Two-box broadcast — Nguyen Tuyen & guest" }
+      ]
+    },
+    {
+      "event": "upwork", "cover": "upwork-1", "pin": "Platform",
+      "name": "Upwork Profile", "loc": "Tri Muhammad J. · Video Production",
+      "desc": "OBS & vMix setups, dual-PC capture, Stream Deck and audio engineering — 20+ jobs across streaming clients.",
+      "galleryTitle": "Upwork — Video Production",
+      "images": [
+        { "src": "upwork-1", "caption": "Profile — 100% Job Success, Rising Talent" },
+        { "src": "upwork-2", "caption": "Jobs in progress" },
+        { "src": "upwork-3", "caption": "Completed jobs — 5-star reviews" },
+        { "src": "upwork-4", "caption": "More completed work" }
+      ]
+    }
+  ],
+  "testimonial": {
+    "quote": "“I’m highly satisfied with Tri Muhammad Jidan’s excellent work setting up my studio. His professionalism, dedication, and attention to detail were impressive. The job was done promptly and affordably. If I could give more than 5 stars, I would. Highly recommended!”",
+    "stars": "★★★★★",
+    "cite": "Tuyen — Streaming & Broadcast Studio Setup, Upwork"
+  }
+}
