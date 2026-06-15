@@ -22,23 +22,24 @@ export async function GET(req: NextRequest) {
 
   const ok = Boolean(data.access_token)
   const status = ok ? 'success' : 'error'
-  const payload = ok
-    ? { token: data.access_token, provider: 'github' }
-    : { error: data.error_description || 'Authentication failed' }
+  const content = ok
+    ? { provider: 'github', token: data.access_token }
+    : { provider: 'github', error: data.error_description || 'Authentication failed' }
 
-  // The popup posts `authorizing:github` to the opener, waits for a reply, then
-  // sends the result back to the opener's origin. The CMS picks it up from there.
+  // Mirror the Sveltia/Decap protocol exactly: announce `authorizing:github` to the
+  // opener, then ONLY respond to the opener's matching `authorizing:github` reply
+  // (posting the result to that message's origin). No premature listener removal.
   const html = `<!doctype html><html><head><meta charset="utf-8" /></head><body>
 <script>
   (function () {
-    function receive(e) {
-      window.opener.postMessage(
-        'authorization:github:${status}:' + ${JSON.stringify(JSON.stringify(payload))},
-        e.origin
-      );
-      window.removeEventListener('message', receive, false);
-    }
-    window.addEventListener('message', receive, false);
+    window.addEventListener('message', function (e) {
+      if (e.data === 'authorizing:github') {
+        window.opener.postMessage(
+          'authorization:github:${status}:' + ${JSON.stringify(JSON.stringify(content))},
+          e.origin
+        );
+      }
+    }, false);
     window.opener.postMessage('authorizing:github', '*');
   })();
 </script>
