@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { siteData } from '@/lib/content'
 
 export default function AboutSection() {
@@ -13,8 +14,15 @@ export default function AboutSection() {
               <span className="dot" />
               OFF AIR
             </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={about.portrait} alt="Tri Muhammad Jidan portrait" />
+            <Image
+              src={about.portrait}
+              alt="Tri Muhammad Jidan portrait"
+              width={742}
+              height={1011}
+              sizes="(max-width: 880px) 100vw, 42vw"
+              placeholder={about.portraitBlur ? 'blur' : 'empty'}
+              blurDataURL={about.portraitBlur}
+            />
           </div>
 
           <div className="about-copy" data-reveal="" data-delay="1">

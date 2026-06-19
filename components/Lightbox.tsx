@@ -1,7 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { galleryData, img } from '@/lib/content'
+import Image from 'next/image'
+import { blur, galleryData, img } from '@/lib/content'
 
 export default function Lightbox({
   event,
@@ -78,8 +79,16 @@ export default function Lightbox({
             <span className="dot" />
             REC
           </span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img(file)} alt={cap} />
+          <Image
+            src={img(file)}
+            alt={cap}
+            fill
+            sizes="(max-width: 640px) 100vw, min(1100px, 100vw)"
+            quality={85}
+            style={{ objectFit: 'contain' }}
+            placeholder={blur(file) ? 'blur' : 'empty'}
+            blurDataURL={blur(file)}
+          />
         </div>
         <div className="lb-meta">
           <div className="lb-title">{data.title}</div>
@@ -91,14 +100,17 @@ export default function Lightbox({
       </div>
       <div className="lb-thumbs">
         {data.imgs.map(([k, c], idx) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             key={k}
             src={img(k)}
             alt={c}
-            loading="lazy"
+            width={92}
+            height={56}
             className={idx === i ? 'active' : ''}
             onClick={() => setI(idx)}
+            style={{ cursor: 'pointer' }}
+            placeholder={blur(k) ? 'blur' : 'empty'}
+            blurDataURL={blur(k)}
           />
         ))}
       </div>

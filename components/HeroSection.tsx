@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { siteData } from '@/lib/content'
 
 export default function HeroSection() {
@@ -42,8 +43,17 @@ export default function HeroSection() {
                 <span className="dot" />
                 CAM 01 · ON AIR
               </span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="headshot-img" src={hero.headshot} alt="Tri Muhammad Jidan" />
+              <Image
+                className="headshot-img"
+                src={hero.headshot}
+                alt="Tri Muhammad Jidan"
+                width={766}
+                height={972}
+                priority
+                sizes="(max-width: 880px) 100vw, 40vw"
+                placeholder={hero.headshotBlur ? 'blur' : 'empty'}
+                blurDataURL={hero.headshotBlur}
+              />
             </div>
             <div className="hero-stats">
               {hero.stats.map((s) => (

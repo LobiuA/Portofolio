@@ -1,7 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { img, siteData } from '@/lib/content'
+import Image from 'next/image'
+import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
 
 export default function WorkSection() {
@@ -90,8 +91,15 @@ export default function WorkSection() {
                       </span>
                     ))}
                   </div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img(e.cover)} alt={e.title} loading="lazy" />
+                  <Image
+                    src={img(e.cover)}
+                    alt={e.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                    placeholder={blur(e.cover) ? 'blur' : 'empty'}
+                    blurDataURL={blur(e.cover)}
+                  />
                   <span className="ev-count">{e.count} shots</span>
                 </div>
                 <div className="ev-body">

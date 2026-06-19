@@ -1,6 +1,7 @@
 'use client'
 
-import { img, siteData } from '@/lib/content'
+import Image from 'next/image'
+import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
 
 export default function FreelanceSection() {
@@ -47,8 +48,15 @@ export default function FreelanceSection() {
                 }}
               >
                 <div className="fl-media">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img(c.cover)} alt={c.name} loading="lazy" />
+                  <Image
+                    src={img(c.cover)}
+                    alt={c.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                    placeholder={blur(c.cover) ? 'blur' : 'empty'}
+                    blurDataURL={blur(c.cover)}
+                  />
                   <span className="ev-count">
                     {c.count} {c.count === 1 ? 'shot' : 'shots'}
                   </span>

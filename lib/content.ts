@@ -12,8 +12,14 @@ import workRaw from '@/content/work.json'
 import freelanceRaw from '@/content/freelance.json'
 import ledger from '@/content/ledger.json'
 import contact from '@/content/contact.json'
+import blurMap from '@/lib/blur.json'
 
 export const img = (key: string) => `/work/${key}.jpg`
+
+// Tiny base64 LQIP for a given image key (see scripts/gen-blur.mjs). Returns undefined
+// when no placeholder was generated, so callers can skip placeholder="blur" safely.
+const blurs = blurMap as Record<string, string>
+export const blur = (key: string): string | undefined => blurs[key]
 
 export const accents = [
   { name: 'Signal Teal', c: '#2fe3c4', ink: '#04201b' },
@@ -68,8 +74,8 @@ const freelanceClients: Client[] = (
 export const siteData = {
   brand: general.brand,
   nav: general.nav,
-  hero: { ...heroJson, headshot: img(heroJson.headshot) },
-  about: { ...aboutJson, portrait: img(aboutJson.portrait) },
+  hero: { ...heroJson, headshot: img(heroJson.headshot), headshotBlur: blur(heroJson.headshot) },
+  about: { ...aboutJson, portrait: img(aboutJson.portrait), portraitBlur: blur(aboutJson.portrait) },
   skills,
   experience,
   work: {
