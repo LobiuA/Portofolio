@@ -303,8 +303,8 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
   line-height: .88; text-transform: uppercase; letter-spacing: -0.01em;
   color: var(--ink); margin: 0;
 }
-.vmix-name-wrap:nth-child(3) .vmix-name-line { animation: enter-up 0.55s ease 0.42s both; }
-.vmix-name-wrap:nth-child(4) .vmix-name-line { animation: enter-up 0.55s ease 0.50s both; }
+.vmix-name-wrap:nth-child(2) .vmix-name-line { animation: enter-up 0.55s ease 0.42s both; }
+.vmix-name-wrap:nth-child(3) .vmix-name-line { animation: enter-up 0.55s ease 0.50s both; }
 .vmix-sub {
   font-family: var(--font-display); font-weight: 700;
   font-size: 28px; text-transform: uppercase;
