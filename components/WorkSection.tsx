@@ -80,10 +80,11 @@ export default function WorkSection() {
         <div className="gallery">
           {work.events.map((e, idx) => {
             const open = () => openLightbox(e.event)
+            const state = stateOf(e)
             return (
               <article
                 key={e.event}
-                className={`ev ev-${stateOf(e)}${matches(e, game, role) ? '' : ' hide'}`}
+                className={`ev ev-${state}${matches(e, game, role) ? '' : ' hide'}`}
                 data-reveal=""
                 data-delay={(idx % 3) || undefined}
                 tabIndex={0}
@@ -118,8 +119,8 @@ export default function WorkSection() {
                   <div className="ev-body-header">
                     <h4>{e.title}</h4>
                     <span className="ev-state-badge">
-                      {stateOf(e) === 'onair' && <span className="tally" aria-hidden="true" />}
-                      {stateLabel(stateOf(e))}
+                      {state === 'onair' && <span className="tally" aria-hidden="true" />}
+                      {stateLabel(state)}
                     </span>
                   </div>
                   <div className="yr">{e.year}</div>
