@@ -1,80 +1,136 @@
 import Image from 'next/image'
 import { siteData } from '@/lib/content'
+import Timecode from './Timecode'
 
 export default function HeroSection() {
   const { hero } = siteData
   return (
-    <header className="hero" id="hero">
-      <div className="wrap">
-        <div className="hero-inner">
-          <div className="hero-lead">
-            <span className="kicker" data-reveal="">
-              {hero.kicker}
-            </span>
-            <h1 data-reveal="" data-delay="1">
-              {hero.nameLines.map((line) => (
-                <span className="line" key={line}>
-                  <span>{line}</span>
-                </span>
-              ))}
-            </h1>
-            <p className="role" data-reveal="" data-delay="2">
-              {hero.role.pre}
-              <span className="accent">{hero.role.accent}</span>
-              {hero.role.post}
-            </p>
-            <p className="lede" data-reveal="" data-delay="2">
-              {hero.lede}
-            </p>
-            <div className="hero-cta" data-reveal="" data-delay="3">
-              {hero.cta.map((c) => (
-                <a key={c.href} className={`btn ${c.primary ? 'btn-primary' : 'btn-ghost'}`} href={c.href}>
-                  {c.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <aside className="hero-aside" data-reveal="" data-delay="2">
-            <div className="headshot-frame">
-              <span className="frame-corner tl" />
-              <span className="frame-corner br" />
-              <span className="frame-tag">
-                <span className="dot" />
-                CAM 01 · ON AIR
-              </span>
-              <Image
-                className="headshot-img"
-                src={hero.headshot}
-                alt="Tri Muhammad Jidan"
-                width={766}
-                height={972}
-                priority
-                sizes="(max-width: 880px) 100vw, 40vw"
-                placeholder={hero.headshotBlur ? 'blur' : 'empty'}
-                blurDataURL={hero.headshotBlur}
-              />
-            </div>
-            <div className="hero-stats">
-              {hero.stats.map((s) => (
-                <div className="stat" key={s.label}>
-                  <div className="n">
-                    {s.n}
-                    {s.plus && <span style={{ color: 'var(--accent)' }}>{s.plus}</span>}
-                  </div>
-                  <div className="l">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </aside>
+    <header className="vmix" id="hero" data-reveal="">
+      {/* ── Bus Label Bar ── */}
+      <div className="bus-bar">
+        <div className="bus-input">INPUT 01 / CAM 01</div>
+        <div className="bus-program">● PROGRAM BUS · TMJ / BROADCAST PORTFOLIO</div>
+        <div className="bus-onair">
+          <span className="tally-dot" />
+          ON AIR
         </div>
       </div>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...hero.marquee, ...hero.marquee].map((m, idx) => (
-            <span key={`${m}-${idx}`}>{m}</span>
+      {/* ── 3-Column Hero Body ── */}
+      <div className="vmix-body">
+
+        {/* Left — Camera Input */}
+        <div className="cam-col">
+          <div className="cam-frame">
+            {/* Sweeping scan line */}
+            <div className="scanline" />
+
+            {/* Corner brackets */}
+            <span className="cam-corner tl" />
+            <span className="cam-corner tr" />
+            <span className="cam-corner bl" />
+            <span className="cam-corner br" />
+
+            {/* Live timecode */}
+            <Timecode start="00:14:22:08" />
+
+            {/* Headshot image */}
+            <Image
+              className="cam-img"
+              src={hero.headshot}
+              alt="Tri Muhammad Jidan"
+              width={766}
+              height={972}
+              priority
+              sizes="200px"
+              placeholder={hero.headshotBlur ? 'blur' : 'empty'}
+              blurDataURL={hero.headshotBlur}
+            />
+          </div>
+
+          {/* Cam Label Bar */}
+          <div className="cam-label">
+            <span className="cam-label-live">
+              <span className="tally-dot" />
+              CAM 01
+            </span>
+            <span className="cam-label-pgm">PGM</span>
+          </div>
+        </div>
+
+        {/* Center — Title */}
+        <div className="vmix-title">
+          <div className="vmix-role" data-reveal="" data-delay="1">
+            {hero.kicker.toUpperCase()}
+          </div>
+
+          {hero.nameLines.map((line, i) => (
+            <div className="vmix-name-wrap" key={line}>
+              <h1
+                className="vmix-name-line"
+                data-reveal=""
+                data-delay={i === 0 ? '2' : '3'}
+              >
+                {line.toUpperCase()}
+              </h1>
+            </div>
           ))}
+
+          <div className="vmix-sub" data-reveal="" data-delay="3">
+            LIVE ESPORTS BROADCAST
+          </div>
+
+          <p className="vmix-lede" data-reveal="" data-delay="3">
+            {hero.lede}
+          </p>
+
+          <div className="vmix-tags" data-reveal="" data-delay="4">
+            {hero.marquee.map((tag) => (
+              <span className="vmix-tag" key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="vmix-cta" data-reveal="" data-delay="4">
+            {hero.cta.map((c) => (
+              <a
+                key={c.href}
+                className={`btn ${c.primary ? 'btn-primary' : 'btn-ghost'}`}
+                href={c.href}
+              >
+                {c.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — Metrics */}
+        <div className="vmix-metrics">
+          <div className="metrics-header" data-reveal="" data-delay="1">METRICS</div>
+          {hero.stats.map((s, i) => (
+            <div
+              className="metric"
+              key={s.label}
+              data-reveal=""
+              data-delay={String(i + 2)}
+            >
+              <div className="metric-n">
+                {s.n}{s.plus}
+              </div>
+              <div className="metric-l">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      {/* ── Ticker Strip ── */}
+      <div className="ticker">
+        <div className="ticker-text">
+          {hero.marquee.join(' · ')} · VCT Pacific Stage 2 · M3 World Championship 2025
+        </div>
+        <div className="ticker-onair">
+          <span className="tally-dot" />
+          ON AIR
         </div>
       </div>
     </header>
