@@ -5,10 +5,9 @@ export default function Footer() {
   return (
     <footer className="foot">
       <div className="wrap foot-inner">
-        <span>{footer.left}</span>
-        <span>
-          {footer.right} · <a href="#top">Back to top ↑</a>
-        </span>
+        <span className="foot-id">{footer.left}</span>
+        <span className="foot-sub">{footer.right}</span>
+        <span className="foot-sig"><span className="tally" /> SIG: LIVE</span>
       </div>
     </footer>
   )
