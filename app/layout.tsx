@@ -1,25 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Hanken_Grotesk, Space_Mono } from 'next/font/google'
+import { Barlow_Condensed, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const barlow = Barlow_Condensed({
+  variable: '--font-barlow',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['700', '900'],
   display: 'swap',
 })
 
-const hanken = Hanken_Grotesk({
-  variable: '--font-hanken',
+const jetbrains = JetBrains_Mono({
+  variable: '--font-jetbrains',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
-
-const spaceMono = Space_Mono({
-  variable: '--font-space-mono',
-  subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
   display: 'swap',
 })
 
@@ -54,7 +47,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${spaceGrotesk.variable} ${hanken.variable} ${spaceMono.variable}`}
+      className={`${barlow.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
       <body>
