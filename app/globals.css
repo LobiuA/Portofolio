@@ -485,19 +485,28 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
   transition: all .25s var(--ease);
 }
 .filter:hover { border-color: var(--line-2); color: var(--ink); }
-.filter[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+.filter[aria-pressed="true"] { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: 700; }
 .filter .ct { opacity: .6; margin-left: 7px; }
 
 .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
 @media (max-width: 980px){ .gallery{ grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 600px){ .gallery{ grid-template-columns: 1fr; } }
 
-.ev {
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
-  overflow: hidden; display: flex; flex-direction: column; cursor: pointer;
-  transition: transform .4s var(--ease), border-color .4s, opacity .4s, box-shadow .4s;
+@keyframes badge-glow {
+  0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 0%, transparent); opacity: 1; }
+  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--live) 28%, transparent); opacity: .85; }
 }
-.ev:hover { transform: translateY(-6px); border-color: var(--line-2); box-shadow: var(--shadow); }
+@keyframes tally-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: .6; }
+}
+
+.ev {
+  background: var(--surface); border: 2px solid var(--ink); border-radius: var(--r-lg);
+  overflow: hidden; display: flex; flex-direction: column; cursor: pointer;
+  transition: transform .4s var(--ease), border-color .4s, opacity .4s;
+}
+.ev:hover { transform: translateY(-6px); border-color: var(--line-2); }
 .ev:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .ev.hide { display: none; }
 .ev-media { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--bg); }
@@ -516,9 +525,30 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
 .ev-flag .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line); padding: 5px 9px; border-radius: 0; color: var(--ink); }
 .ev-flag .tag.live { color: var(--live); border-color: color-mix(in srgb,var(--live) 45%,transparent); }
 .ev-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ev-body-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.ev-body-header h4 { font-family: var(--font-display); font-weight: 900; font-size: 22px; line-height: 1.15; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; flex: 1; }
+.ev-state-badge {
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 0; white-space: nowrap; flex-shrink: 0;
+  display: flex; align-items: center; gap: 5px; align-self: flex-start; margin-top: 3px;
+  border: 1px solid var(--gray-dark); color: var(--gray-dark);
+}
+.tally {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--live); flex-shrink: 0;
+  animation: tally-pulse 1.4s ease-in-out infinite;
+}
 .ev-body .yr { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--ink-3); }
-.ev-body h4 { font-family: var(--font-display); font-weight: 600; font-size: 20px; line-height: 1.15; letter-spacing: -.01em; text-wrap: balance; }
 .ev-body .ev-role { color: var(--accent); font-family: var(--font-mono); font-size: 12.5px; margin-top: auto; padding-top: 6px; }
+
+/* State modifiers */
+.ev-onair .ev-state-badge { border: 2px solid var(--live); color: var(--live); animation: badge-glow 1.4s ease-in-out infinite; }
+.ev-standby .ev-state-badge { border: 2px solid var(--amber); color: var(--amber); }
+.ev-complete { border-color: var(--line); }
+.ev-complete .ev-body-header h4 { color: var(--dim); }
+.ev-complete .ev-body .yr { color: var(--dim); }
+.ev-complete .ev-body .ev-role { color: var(--dim); }
+.ev-complete .ev-state-badge { border: 1px solid var(--gray-dark); color: var(--gray-dark); }
 
 /* ============================================================
    FREELANCE / UPWORK

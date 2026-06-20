@@ -14,6 +14,18 @@ export default function WorkSection() {
   const matches = (e: (typeof work.events)[number], g: string, r: string) =>
     (g === 'all' || e.game === g) && (r === 'all' || e.roles.includes(r))
 
+  const stateOf = (e: (typeof work.events)[number]): 'onair' | 'standby' | 'complete' => {
+    if (e.flags.some((f) => f.live)) return 'onair'
+    const year = parseInt(e.year, 10)
+    return year >= 2025 ? 'standby' : 'complete'
+  }
+
+  const stateLabel = (s: ReturnType<typeof stateOf>) => {
+    if (s === 'onair') return 'ON AIR'
+    if (s === 'standby') return 'STANDBY'
+    return 'COMPLETE'
+  }
+
   // count results a filter button would yield, holding the other axis fixed
   const countFor = useMemo(
     () => (groupVal: string, isGame: boolean) =>
@@ -71,7 +83,7 @@ export default function WorkSection() {
             return (
               <article
                 key={e.event}
-                className={`ev${matches(e, game, role) ? '' : ' hide'}`}
+                className={`ev ev-${stateOf(e)}${matches(e, game, role) ? '' : ' hide'}`}
                 data-reveal=""
                 data-delay={(idx % 3) || undefined}
                 tabIndex={0}
@@ -103,8 +115,14 @@ export default function WorkSection() {
                   <span className="ev-count">{e.count} shots</span>
                 </div>
                 <div className="ev-body">
+                  <div className="ev-body-header">
+                    <h4>{e.title}</h4>
+                    <span className="ev-state-badge">
+                      {stateOf(e) === 'onair' && <span className="tally" aria-hidden="true" />}
+                      {stateLabel(stateOf(e))}
+                    </span>
+                  </div>
                   <div className="yr">{e.year}</div>
-                  <h4>{e.title}</h4>
                   <div className="ev-role">{e.role}</div>
                 </div>
               </article>
