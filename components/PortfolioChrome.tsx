@@ -9,17 +9,9 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import { accents } from '@/lib/content'
 import Lightbox from '@/components/Lightbox'
 
-type Accent = (typeof accents)[number]
-type Theme = 'dark' | 'light'
-
 interface ChromeCtx {
-  theme: Theme
-  toggleTheme: () => void
-  accent: Accent
-  setAccent: (a: Accent) => void
   openLightbox: (event: string) => void
 }
 
@@ -32,47 +24,7 @@ export function usePortfolio() {
 }
 
 export default function PortfolioChrome({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark')
-  const [accent, setAccentState] = useState<Accent>(accents[0])
   const [lbEvent, setLbEvent] = useState<string | null>(null)
-
-  /* ---------- restore persisted theme + accent ---------- */
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('tmj-theme') as Theme | null
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      setTheme(savedTheme)
-      document.documentElement.setAttribute('data-theme', savedTheme)
-    }
-    const savedAccent = localStorage.getItem('tmj-accent')
-    if (savedAccent) {
-      try {
-        const a = JSON.parse(savedAccent) as Accent
-        if (a?.c) {
-          setAccentState(a)
-          document.documentElement.style.setProperty('--accent', a.c)
-          document.documentElement.style.setProperty('--accent-ink', a.ink)
-        }
-      } catch {
-        /* ignore */
-      }
-    }
-  }, [])
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'light' ? 'dark' : 'light'
-      document.documentElement.setAttribute('data-theme', next)
-      localStorage.setItem('tmj-theme', next)
-      return next
-    })
-  }, [])
-
-  const setAccent = useCallback((a: Accent) => {
-    setAccentState(a)
-    document.documentElement.style.setProperty('--accent', a.c)
-    document.documentElement.style.setProperty('--accent-ink', a.ink)
-    localStorage.setItem('tmj-accent', JSON.stringify(a))
-  }, [])
 
   const openLightbox = useCallback((event: string) => setLbEvent(event), [])
 
@@ -142,7 +94,7 @@ export default function PortfolioChrome({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <Ctx.Provider value={{ theme, toggleTheme, accent, setAccent, openLightbox }}>
+    <Ctx.Provider value={{ openLightbox }}>
       <div className="cursor-glow" ref={glowRef} aria-hidden="true" />
       {children}
       <Lightbox event={lbEvent} onClose={() => setLbEvent(null)} />

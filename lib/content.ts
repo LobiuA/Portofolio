@@ -21,13 +21,6 @@ export const img = (key: string) => `/work/${key}.jpg`
 const blurs = blurMap as Record<string, string>
 export const blur = (key: string): string | undefined => blurs[key]
 
-export const accents = [
-  { name: 'Signal Teal', c: '#2fe3c4', ink: '#04201b' },
-  { name: 'Stream Blue', c: '#4d8dff', ink: '#04132e' },
-  { name: 'Caster Magenta', c: '#ff5bb0', ink: '#2e0421' },
-  { name: 'Tally Amber', c: '#ffb13d', ink: '#2e1c04' },
-  { name: 'Court Green', c: '#7be05a', ink: '#0c2604' },
-] as const
 
 interface ImageRef {
   src: string

@@ -151,20 +151,6 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
 }
 .icon-btn:hover { border-color: var(--line-2); transform: translateY(-2px); }
 .icon-btn svg { width: 18px; height: 18px; }
-.sun { display: none; } [data-theme="light"] .sun { display: block; } [data-theme="light"] .moon { display: none; }
-
-/* accent picker */
-.accent-pop { position: relative; }
-.swatches {
-  position: absolute; top: 50px; right: 0;
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--r-md); padding: 12px; display: none; gap: 8px;
-  box-shadow: var(--shadow);
-}
-.accent-pop.open .swatches { display: flex; }
-.swatch { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform .2s; }
-.swatch:hover { transform: scale(1.15); }
-.swatch[aria-pressed="true"] { border-color: var(--ink); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 9px;
@@ -491,7 +477,6 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
   background: radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%);
   opacity: 0; transition: opacity .6s; mix-blend-mode: screen;
 }
-[data-theme="light"] .cursor-glow { mix-blend-mode: multiply; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%); }
 @media (hover: hover){ .cursor-glow.on { opacity: 1; } }
 @media (max-width: 880px){ .cursor-glow{ display:none; } }
 
