@@ -11,10 +11,19 @@ export default function ExperienceSection() {
         </div>
         <div className="timeline">
           {experience.items.map((item) => (
-            <div className="tl-item" data-reveal="" key={item.role}>
+            <div className={`tl-item ${item.active ? 'tl-onair' : 'tl-complete'}`} data-reveal="" key={item.role}>
               <div className="tl-when">
                 {item.when}
-                {item.active && <div className="now">Active</div>}
+                <div className="tl-badge">
+                  {item.active ? (
+                    <>
+                      <span className="tally" />
+                      ON AIR
+                    </>
+                  ) : (
+                    'COMPLETE'
+                  )}
+                </div>
               </div>
               <div className="tl-body">
                 <h3>{item.role}</h3>

@@ -400,6 +400,7 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
   .metric, .tc, .ticker { animation: none; opacity: 1; transform: none; }
   .bus-onair { animation: none; }
   .tally-dot { animation: none; }
+  .tl-onair .tl-badge { animation: none; }
 }
 
 /* ============================================================
@@ -467,9 +468,27 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
 .tl-item { display: grid; grid-template-columns: 200px 1fr; gap: clamp(20px,4vw,56px); padding: 34px 0; border-top: 1px solid var(--line); position: relative; }
 .tl-item:last-child { border-bottom: 1px solid var(--line); }
 @media (max-width: 760px){ .tl-item{ grid-template-columns: 1fr; gap: 14px; } }
-.tl-when { font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: .04em; padding-top: 6px; }
-.tl-when .now { display:inline-block; margin-top: 8px; font-size: 10px; letter-spacing: .14em; color: var(--live); border: 1px solid color-mix(in srgb,var(--live) 40%, transparent); border-radius: 0; padding: 3px 8px; }
-.tl-body h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(22px,2.6vw,30px); letter-spacing: -.015em; }
+.tl-when { font-family: var(--font-mono); font-size: 13px; color: var(--amber); letter-spacing: .04em; padding-top: 6px; display: flex; flex-direction: column; gap: 10px; }
+/* Legacy .now — replaced by .tl-badge; kept for safety but visually hidden */
+.tl-when .now { display: none; }
+/* State badge */
+.tl-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 0;
+}
+.tl-onair .tl-badge {
+  border: 2px solid var(--live); color: var(--live);
+  animation: badge-glow 1.4s ease-in-out infinite;
+}
+.tl-onair .tl-badge .tally {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--live); flex-shrink: 0; display: inline-block;
+  animation: tally-pulse 1.4s ease-in-out infinite;
+}
+.tl-complete .tl-badge { border: 1px solid var(--gray-dark); color: var(--dim); }
+.tl-body h3 { font-family: var(--font-display); font-weight: 900; font-size: clamp(22px,2.6vw,30px); letter-spacing: -.01em; text-transform: uppercase; }
 .tl-body .where { color: var(--ink-2); font-family: var(--font-mono); font-size: 13px; letter-spacing: .03em; margin-top: 6px; }
 .tl-body .desc { color: var(--ink-2); margin-top: 14px; max-width: 64ch; text-wrap: pretty; }
 .tl-body .where .org { color: var(--ink); }
