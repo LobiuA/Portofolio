@@ -5,14 +5,20 @@ import Image from 'next/image'
 import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
 
+// pure helper — no hooks, lives at module scope so useMemo deps stay stable
+function matches(
+  e: { game: string; roles: string[] },
+  g: string,
+  r: string,
+): boolean {
+  return (g === 'all' || e.game === g) && (r === 'all' || e.roles.includes(r))
+}
+
 export default function WorkSection() {
   const { work } = siteData
   const { openLightbox } = usePortfolio()
   const [game, setGame] = useState('all')
   const [role, setRole] = useState('all')
-
-  const matches = (e: (typeof work.events)[number], g: string, r: string) =>
-    (g === 'all' || e.game === g) && (r === 'all' || e.roles.includes(r))
 
   const stateOf = (e: (typeof work.events)[number]): 'onair' | 'standby' | 'complete' => {
     if (e.flags.some((f) => f.live)) return 'onair'

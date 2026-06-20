@@ -12,12 +12,8 @@ export default function Lightbox({
   onClose: () => void
 }) {
   const data = event ? galleryData[event] : null
+  // i resets to 0 naturally on remount (PortfolioChrome passes key={lbEvent ?? ''})
   const [i, setI] = useState(0)
-
-  // reset to first shot whenever a new set opens
-  useEffect(() => {
-    setI(0)
-  }, [event])
 
   const step = useCallback(
     (d: number) => {

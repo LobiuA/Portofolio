@@ -126,7 +126,7 @@ export default function HeroSection() {
       {/* ── Ticker Strip ── */}
       <div className="ticker">
         <div className="ticker-text">
-          {hero.marquee.join(' · ')} · VCT Pacific Stage 2 · M3 World Championship 2025
+          {hero.marquee.join(' · ')} · {hero.ticker.join(' · ')}
         </div>
         <div className="ticker-onair">
           <span className="tally-dot" />

@@ -20,5 +20,9 @@
   "marquee": [
     "vMix", "OBS Studio", "CG / GT Graphics", "Audio Operator",
     "In-Game Observer", "Replay Operator", "Encoder", "League Operation"
+  ],
+  "ticker": [
+    "VCT Pacific Stage 2",
+    "M3 World Championship 2025"
   ]
 }

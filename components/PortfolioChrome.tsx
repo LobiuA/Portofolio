@@ -97,7 +97,7 @@ export default function PortfolioChrome({ children }: { children: ReactNode }) {
     <Ctx.Provider value={{ openLightbox }}>
       <div className="cursor-glow" ref={glowRef} aria-hidden="true" />
       {children}
-      <Lightbox event={lbEvent} onClose={() => setLbEvent(null)} />
+      <Lightbox key={lbEvent ?? ''} event={lbEvent} onClose={() => setLbEvent(null)} />
     </Ctx.Provider>
   )
 }
