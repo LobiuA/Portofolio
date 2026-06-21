@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { siteData } from '@/lib/content'
 import Timecode from './Timecode'
+import CountUp from './CountUp'
+import MarqueeTicker from './MarqueeTicker'
 
 export default function HeroSection() {
   const { hero } = siteData
@@ -114,7 +116,7 @@ export default function HeroSection() {
               data-delay={String(i + 2)}
             >
               <div className="metric-n">
-                {s.n}{s.plus}
+                <CountUp value={s.n} suffix={s.plus} />
               </div>
               <div className="metric-l">{s.label}</div>
             </div>
@@ -125,9 +127,9 @@ export default function HeroSection() {
 
       {/* ── Ticker Strip ── */}
       <div className="ticker">
-        <div className="ticker-text">
-          {hero.marquee.join(' · ')} · {hero.ticker.join(' · ')}
-        </div>
+        <MarqueeTicker
+          text={`${hero.marquee.join(' · ')} · ${hero.ticker.join(' · ')} · `}
+        />
         <div className="ticker-onair">
           <span className="tally-dot" />
           ON AIR
