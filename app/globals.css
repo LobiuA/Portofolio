@@ -30,6 +30,9 @@
   --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
 
   --nav-h: 56px;
+  --cam-w: 350px; /* hero camera (headshot) column width */
+  --metrics-w: 250px; /* hero metrics column width */
+  --hero-shift: 80px; /* empty space on the left of the hero (detaches the photo box) */
   --maxw: 1240px;
   --gut: clamp(20px, 5vw, 80px);
   --r-sm: 0; --r-md: 0; --r-lg: 0;
@@ -171,12 +174,13 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
   border-bottom: 3px solid var(--ink);
   position: relative;
   padding-top: var(--nav-h); /* clear the fixed nav */
+  padding-left: var(--hero-shift); /* leave empty space on the left, detaching the photo box */
 }
 
 /* ── Bus Label Bar ── */
 .bus-bar {
   display: grid;
-  grid-template-columns: 200px 1fr auto;
+  grid-template-columns: var(--cam-w) 1fr auto;
   border-bottom: 2px solid var(--ink);
   animation: enter-fade 0.5s ease 0s both;
 }
@@ -208,12 +212,13 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
 /* ── 3-Column Hero Body ── */
 .vmix-body {
   display: grid;
-  grid-template-columns: 200px 1fr 172px;
+  grid-template-columns: var(--cam-w) 1fr var(--metrics-w);
   min-height: 400px;
 }
 
 /* ── Camera Column ── */
 .cam-col {
+  border-left: 2px solid var(--ink);
   border-right: 2px solid var(--ink);
   display: flex; flex-direction: column;
   animation: enter-fade 0.5s ease 0.15s both;
@@ -372,11 +377,11 @@ section.block { padding-block: clamp(72px, 11vw, 150px); position: relative; }
 
 /* ── Responsive — single column under 940px ── */
 @media (max-width: 940px) {
-  .vmix { padding-top: 72px; }
+  .vmix { padding-top: 72px; padding-left: 0; }
   .bus-bar { grid-template-columns: 1fr auto; }
   .bus-input { display: none; }
   .vmix-body { grid-template-columns: 1fr; min-height: auto; }
-  .cam-col { border-right: none; border-bottom: 2px solid var(--ink); }
+  .cam-col { border-left: none; border-right: none; border-bottom: 2px solid var(--ink); }
   .cam-frame { min-height: 240px; }
   .vmix-metrics { border-top: 2px solid var(--ink); display: flex; flex-wrap: wrap; gap: 0; }
   .metrics-header { width: 100%; }

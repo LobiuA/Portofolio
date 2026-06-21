@@ -42,7 +42,7 @@ export default function HeroSection() {
               width={766}
               height={972}
               priority
-              sizes="(max-width: 940px) 100vw, 200px"
+              sizes="(max-width: 940px) 100vw, 350px"
               placeholder={hero.headshotBlur ? 'blur' : 'empty'}
               blurDataURL={hero.headshotBlur}
             />
