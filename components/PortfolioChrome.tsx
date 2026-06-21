@@ -33,7 +33,8 @@ export default function PortfolioChrome({ children }: { children: ReactNode }) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const fillMeters = (scope: ParentNode) =>
       scope.querySelectorAll<HTMLElement>('.fill[data-w]').forEach((f) => {
-        f.style.width = f.dataset.w || ''
+        const pct = parseFloat(f.dataset.w || '0') / 100
+        f.style.transform = `scaleX(${pct})`
       })
 
     if (reduce) {

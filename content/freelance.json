@@ -4,7 +4,7 @@
   "sub": "Building live graphics packages and advising on broadcast technical setups for international productions — with a 100% job-success record.",
   "stats": [
     { "n": "100", "plus": "%", "label": "Job success" },
-    { "n": "13", "plus": "", "label": "Jobs completed" },
+    { "n": "19", "plus": "", "label": "Jobs completed" },
     { "n": "$700", "plus": "+", "label": "Total earned" },
     { "n": "Rising", "plus": "", "label": "Upwork talent" }
   ],
@@ -33,7 +33,7 @@
     {
       "event": "upwork", "cover": "upwork-1", "pin": "Platform",
       "name": "Upwork Profile", "loc": "Tri Muhammad J. · Video Production",
-      "desc": "OBS & vMix setups, dual-PC capture, Stream Deck and audio engineering — 20+ jobs across streaming clients.",
+      "desc": "OBS & vMix setups, dual-PC capture, Stream Deck and audio engineering — 19 jobs on the platform, plus direct clients outside Upwork.",
       "galleryTitle": "Upwork — Video Production",
       "images": [
         { "src": "upwork-1", "caption": "Profile — 100% Job Success, Rising Talent" },
