@@ -1,9 +1,11 @@
 'use client'
 
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
-import TestimonialCarousel from '@/components/TestimonialCarousel'
+
+const TestimonialCarousel = dynamic(() => import('./TestimonialCarousel'), { ssr: false })
 
 export default function FreelanceSection() {
   const { freelance } = siteData

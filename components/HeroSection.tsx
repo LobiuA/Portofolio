@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { siteData } from '@/lib/content'
 import Timecode from './Timecode'
 import CountUp from './CountUp'
 import MarqueeTicker from './MarqueeTicker'
-import HeroMetrics from './HeroMetrics'
+
+const HeroMetrics = dynamic(() => import('./HeroMetrics'), { ssr: false })
 
 export default function HeroSection() {
   const { hero } = siteData

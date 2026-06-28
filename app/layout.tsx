@@ -63,6 +63,9 @@ export default function RootLayout({
       className={`${barlow.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body>
         <a href="#main-content" className="sr-only skip-link">
           Skip to main content
