@@ -5,7 +5,7 @@ import AboutCopy from './AboutCopy'
 export default function AboutSection() {
   const { about } = siteData
   return (
-    <section className="block" id="about">
+    <section className="block block--tight" id="about" data-reveal="from-left">
       <div className="wrap">
         <div className="about-grid">
           <AboutPortrait src={about.portrait} blurDataURL={about.portraitBlur} />

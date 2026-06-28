@@ -36,6 +36,19 @@ export const metadata: Metadata = {
     'in-game observer',
   ],
   authors: [{ name: 'Tri Muhammad Jidan' }],
+  openGraph: {
+    title: 'Tri Muhammad Jidan — Broadcast & Livestream Operator',
+    description:
+      'Broadcast & livestream operator with 5+ years on live esports production crews.',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tri Muhammad Jidan — Broadcast & Livestream Operator',
+    description:
+      'Broadcast & livestream operator with 5+ years on live esports production crews.',
+  },
 }
 
 export default function RootLayout({

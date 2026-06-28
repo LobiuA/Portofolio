@@ -3,7 +3,7 @@ import { siteData } from '@/lib/content'
 export default function SkillsSection() {
   const { skills } = siteData
   return (
-    <section className="block" id="skills" style={{ background: 'var(--bg-2)' }}>
+    <section className="block block--tight" id="skills" style={{ background: 'var(--bg-2)' }} data-reveal="from-scale">
       <div className="wrap">
         <div className="section-head" data-reveal="">
           <span className="kicker">{skills.kicker}</span>

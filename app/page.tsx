@@ -19,13 +19,19 @@ export default function Home() {
         <a id="top" />
         <main id="main-content">
           <HeroSection />
-          <AboutSection />
-          <SkillsSection />
+          <div className="wrap">
+            <AboutSection />
+          </div>
+          <div className="wrap">
+            <SkillsSection />
+          </div>
           <ExperienceSection />
           <WorkSection />
           <FreelanceSection />
           <LedgerSection />
-          <ContactSection />
+          <div className="wrap">
+            <ContactSection />
+          </div>
         </main>
         <Footer />
       </PortfolioChrome>

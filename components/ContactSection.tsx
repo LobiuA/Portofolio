@@ -3,7 +3,7 @@ import { siteData } from '@/lib/content'
 export default function ContactSection() {
   const { contact } = siteData
   return (
-    <section className="block contact" id="contact">
+    <section className="block contact" id="contact" data-reveal="from-right">
       <div className="wrap">
         <div className="contact-card" data-reveal="">
           <div className="contact-intro">
