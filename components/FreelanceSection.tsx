@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
+import TestimonialCarousel from '@/components/TestimonialCarousel'
 
 export default function FreelanceSection() {
   const { freelance } = siteData
@@ -63,7 +64,7 @@ export default function FreelanceSection() {
                 </div>
                 <div className="fl-info">
                   <div className="pin">{c.pin}</div>
-                  <h4>{c.name}</h4>
+                  <h3>{c.name}</h3>
                   <div className="loc">{c.loc}</div>
                   <p>{c.desc}</p>
                 </div>
@@ -72,13 +73,7 @@ export default function FreelanceSection() {
           })}
         </div>
 
-        <figure className="testimonial" data-reveal="">
-          <blockquote>{freelance.testimonial.quote}</blockquote>
-          <figcaption>
-            <span className="stars">{freelance.testimonial.stars}</span>{' '}
-            {freelance.testimonial.cite}
-          </figcaption>
-        </figure>
+        <TestimonialCarousel items={freelance.testimonial} />
       </div>
     </section>
   )

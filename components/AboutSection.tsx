@@ -12,9 +12,10 @@ export default function AboutSection() {
 
           <div className="about-copy" data-reveal="" data-delay="1">
             <span className="kicker">{about.kicker}</span>
+            <h2>About Me</h2>
             <AboutCopy paras={about.paras} />
             <div className="interest-inline">
-              <h4>{about.interestsLabel}</h4>
+              <h3>{about.interestsLabel}</h3>
               <div className="chips">
                 {about.chips.map((c) => (
                   <span className="chip" key={c}>

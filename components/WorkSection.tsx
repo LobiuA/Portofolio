@@ -164,7 +164,7 @@ export default function WorkSection() {
                     </div>
                     <div className="ev-body">
                       <div className="ev-body-header">
-                        <h4>{e.title}</h4>
+                        <h3>{e.title}</h3>
                         <span className="ev-state-badge">
                           {state === 'onair' && <span className="tally" aria-hidden="true" />}
                           {stateLabel(state)}
