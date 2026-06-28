@@ -14,60 +14,45 @@ function scramble(len: number) {
   return s
 }
 
-// Build a resolve schedule — each char flips at random-ish intervals
+// Build a resolve schedule — each char flips at fixed intervals
 // Phase 1: full garble, Phase 2: partial resolve, Phase 3: full clean
-function buildSchedule(text: string): { at: number; reveal: number }[] {
+function buildSchedule(text: string): number[] {
   const chars = text.split('')
-  const schedule: { at: number; reveal: number }[] = chars.map((_, i) => ({
-    at: 0,
-    reveal: 0,
-  }))
-
-  // Phase 1 (0.2-0.5s): mostly scrambled
-  // Phase 2 (0.5-0.9s): chars resolve left→right with some jitter
-  const stagger = 0.045
+  const stagger = 0.12
+  const reveals: number[] = []
   for (let i = 0; i < chars.length; i++) {
-    // Skip spaces — show them immediately
-    if (chars[i] === ' ') {
-      schedule[i].reveal = 0.15
-      continue
-    }
-    // Resolve timing: left chars resolve first, with jitter
-    schedule[i].reveal = 0.45 + i * stagger + Math.random() * stagger * 2
+    if (chars[i] === ' ') { reveals.push(0.2); continue }
+    reveals.push(0.5 + i * stagger)
   }
-  return schedule
+  return reveals
 }
+
+const SCHEDULE = buildSchedule(FULL)
+const MAX_REVEAL = Math.max(...SCHEDULE)
 
 export default function NameIntro({ onDone }: { onDone: () => void }) {
   const [display, setDisplay] = useState(() => scramble(FULL.length))
-  const [phase, setPhase] = useState(0) // 0=garble, 1=resolving, 2=clean
+  const [phase, setPhase] = useState(0)
   const [timecode, setTimecode] = useState('00:00:00:00')
   const overlayRef = useRef<HTMLDivElement>(null)
-  const schedule = buildSchedule(FULL)
 
-  // Resolve letters over time
+  // Resolve letters over time — use stable SCHEDULE so timers don't drift per render
   useEffect(() => {
-    const maxReveal = Math.max(...schedule.map((s) => s.reveal))
-    let frame = 0
-    let started = performance.now()
-
-    // Start garble animation — flash random chars
+    // Garble — cycle random chars every 80ms
     const garbleId = setInterval(() => {
       setDisplay((prev) => {
         const next = prev.split('')
         for (let i = 0; i < next.length; i++) {
-          if (FULL[i] === ' ') continue
-          // Only change chars that haven't resolved yet
-          if (next[i] === FULL[i]) continue
+          if (FULL[i] === ' ' || next[i] === FULL[i]) continue
           next[i] = GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
         }
         return next.join('')
       })
     }, 80)
 
-    // Resolve chars at their scheduled times
+    // Resolve chars at fixed times
     const timers: ReturnType<typeof setTimeout>[] = []
-    schedule.forEach((s, i) => {
+    SCHEDULE.forEach((t, i) => {
       if (FULL[i] === ' ') return
       timers.push(
         setTimeout(() => {
@@ -76,22 +61,21 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
             next[i] = FULL[i]
             return next.join('')
           })
-        }, s.reveal * 1000),
+        }, t * 1000),
       )
     })
 
-    // Mark clean
+    // All resolved — show SIGNAL LOCKED
     const cleanTimer = setTimeout(() => {
       setPhase(2)
       setDisplay(FULL)
       clearInterval(garbleId)
-    }, (maxReveal + 0.15) * 1000)
+    }, (MAX_REVEAL + 0.15) * 1000)
     timers.push(cleanTimer)
 
-    // Transition to hero
+    // Fade out → reveal hero
     const doneTimer = setTimeout(() => {
       setPhase(3)
-      // Animate overlay out
       const overlay = overlayRef.current
       if (overlay) {
         gsap.to(overlay, {
@@ -103,14 +87,14 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
       } else {
         onDone()
       }
-    }, (maxReveal + 0.8) * 1000)
+    }, (MAX_REVEAL + 0.8) * 1000)
     timers.push(doneTimer)
 
     return () => {
       clearInterval(garbleId)
       timers.forEach(clearTimeout)
     }
-  }, [schedule, onDone])
+  }, [onDone])
 
   // Timecode
   useEffect(() => {
