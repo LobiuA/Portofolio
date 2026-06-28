@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import PortfolioChrome from '@/components/PortfolioChrome'
 import Nav from '@/components/Nav'
@@ -17,6 +17,7 @@ import NameIntro from '@/components/NameIntro'
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false)
+  const flashRef = useRef<HTMLDivElement>(null)
 
   // Skip intro if user prefers reduced motion
   useEffect(() => {
@@ -25,9 +26,32 @@ export default function Home() {
     }
   }, [])
 
+  // Flash on hero reveal (glitch cut)
+  useEffect(() => {
+    if (!introDone || !flashRef.current) return
+    const el = flashRef.current
+    el.style.opacity = '0.85'
+    const raf = requestAnimationFrame(() => {
+      el.style.transition = 'opacity 0.25s ease-out'
+      el.style.opacity = '0'
+    })
+    const t = setTimeout(() => el.remove(), 400)
+    return () => { cancelAnimationFrame(raf); clearTimeout(t) }
+  }, [introDone])
+
   return (
     <>
       {!introDone && <NameIntro onDone={() => setIntroDone(true)} />}
+      {/* Glitch-cut flash overlay — one frame white then fade */}
+      {introDone && (
+        <div
+          ref={flashRef}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 9998,
+            background: '#fff', opacity: 0, pointerEvents: 'none',
+          }}
+        />
+      )}
       <SmoothScrollProvider>
         <PortfolioChrome>
           <Nav />

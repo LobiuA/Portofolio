@@ -5,7 +5,7 @@ import gsap from 'gsap'
 
 const FULL = 'TRI MUHAMMAD JIDAN'
 
-// Scramble chars — random uppercase + underscore for the glitch look
+// Scramble chars — random uppercase + underscore glitch look
 const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_'
 
 function scramble(len: number) {
@@ -14,8 +14,7 @@ function scramble(len: number) {
   return s
 }
 
-// Build a resolve schedule — each char flips at fixed intervals
-// Phase 1: full garble, Phase 2: partial resolve, Phase 3: full clean
+// Build schedule — fixed intervals so chars resolve predictably
 function buildSchedule(text: string): number[] {
   const chars = text.split('')
   const stagger = 0.12
@@ -35,10 +34,13 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
   const [phase, setPhase] = useState(0)
   const [timecode, setTimecode] = useState('00:00:00:00')
   const overlayRef = useRef<HTMLDivElement>(null)
+  const flashRef = useRef<HTMLDivElement>(null)
 
-  // Resolve letters over time — use stable SCHEDULE so timers don't drift per render
+  // Resolve letters over time — stable SCHEDULE timers, don't drift
   useEffect(() => {
-    // Garble — cycle random chars every 80ms
+    const timers: ReturnType<typeof setTimeout>[] = []
+
+    // Garble cycle — random chars every 80ms
     const garbleId = setInterval(() => {
       setDisplay((prev) => {
         const next = prev.split('')
@@ -50,22 +52,18 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
       })
     }, 80)
 
-    // Resolve chars at fixed times
-    const timers: ReturnType<typeof setTimeout>[] = []
+    // Resolve chars — fire timers that lock each position
     SCHEDULE.forEach((t, i) => {
-      if (FULL[i] === ' ') return
-      timers.push(
-        setTimeout(() => {
-          setDisplay((prev) => {
-            const next = prev.split('')
-            next[i] = FULL[i]
-            return next.join('')
-          })
-        }, t * 1000),
-      )
+      timers.push(setTimeout(() => {
+        setDisplay((prev) => {
+          const next = prev.split('')
+          next[i] = FULL[i]
+          return next.join('')
+        })
+      }, t * 1000))
     })
 
-    // All resolved — show SIGNAL LOCKED
+    // Phase 2: clean signal
     const cleanTimer = setTimeout(() => {
       setPhase(2)
       setDisplay(FULL)
@@ -73,21 +71,47 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
     }, (MAX_REVEAL + 0.15) * 1000)
     timers.push(cleanTimer)
 
+    // Glitch shake → white flash → fade out
+    const glitchTimer = setTimeout(() => {
+      setPhase(3)
+      const overlay = overlayRef.current
+      if (overlay) {
+        // Glitch shake
+        gsap.to(overlay, {
+          x: '+=8',
+          duration: 0.04,
+          ease: 'none',
+          repeat: 5,
+          yoyo: true,
+        })
+      }
+    }, (MAX_REVEAL + 0.6) * 1000)
+    timers.push(glitchTimer)
+
+    // White flash (1 frame)
+    const flashTimer = setTimeout(() => {
+      const flash = flashRef.current
+      if (flash) {
+        gsap.fromTo(flash, { opacity: 0.95 }, { opacity: 0, duration: 0.15, ease: 'power2.out' })
+      }
+    }, (MAX_REVEAL + 0.9) * 1000)
+    timers.push(flashTimer)
+
     // Fade out → reveal hero
     const doneTimer = setTimeout(() => {
-      setPhase(3)
+      setPhase(4)
       const overlay = overlayRef.current
       if (overlay) {
         gsap.to(overlay, {
           opacity: 0,
-          duration: 0.5,
+          duration: 0.3,
           ease: 'power2.in',
           onComplete: () => onDone(),
         })
       } else {
         onDone()
       }
-    }, (MAX_REVEAL + 0.8) * 1000)
+    }, (MAX_REVEAL + 1.1) * 1000)
     timers.push(doneTimer)
 
     return () => {
@@ -153,15 +177,15 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
           textAlign: 'center',
         }}
       >
-        {phase === 3 ? FULL : display.split('').map((ch, i) => {
+        {phase === 4 ? FULL : display.split('').map((ch, i) => {
           const isResolved = ch === FULL[i]
           const isSpace = ch === ' '
           return (
             <span
               key={i}
               style={{
-                color: isSpace ? 'transparent' : isResolved ? '#F2F0EB' : '#E8332C',
-                opacity: isSpace ? 0 : isResolved ? 1 : 0.7,
+                color: isSpace ? 'transparent' : isResolved ? '#F2F0EB' : '#555',
+                display: 'inline-block',
                 transition: 'color 0.15s, opacity 0.15s',
               }}
             >
@@ -196,7 +220,7 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
             animation: phase >= 2 ? 'tally-pulse 1.4s ease-in-out infinite' : 'none',
           }}
         />
-        {phase >= 2 ? 'SIGNAL LOCKED' : 'ACQUIRING...'}
+        {phase === 3 ? '⚠ GLITCH' : phase >= 2 ? 'SIGNAL LOCKED' : 'ACQUIRING...'}
       </div>
 
       {/* Timecode */}
@@ -212,6 +236,19 @@ export default function NameIntro({ onDone }: { onDone: () => void }) {
       >
         {timecode}
       </div>
+
+      {/* White flash — one frame glitch cut */}
+      <div
+        ref={flashRef}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 10000,
+          background: '#fff',
+          opacity: 0,
+          pointerEvents: 'none',
+        }}
+      />
     </div>
   )
 }
