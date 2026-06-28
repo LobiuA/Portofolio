@@ -3,6 +3,7 @@ import { siteData } from '@/lib/content'
 import Timecode from './Timecode'
 import CountUp from './CountUp'
 import MarqueeTicker from './MarqueeTicker'
+import HeroMetrics from './HeroMetrics'
 
 export default function HeroSection() {
   const { hero } = siteData
@@ -105,23 +106,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Metrics */}
-        <div className="vmix-metrics">
-          <div className="metrics-header" data-reveal="" data-delay="1">METRICS</div>
-          {hero.stats.map((s, i) => (
-            <div
-              className="metric"
-              key={s.label}
-              data-reveal=""
-              data-delay={String(i + 2)}
-            >
-              <div className="metric-n">
-                <CountUp value={s.n} suffix={s.plus} />
-              </div>
-              <div className="metric-l">{s.label}</div>
-            </div>
-          ))}
-        </div>
+        {/* Right — Metrics with parallax drift */}
+        <HeroMetrics />
 
       </div>
 
