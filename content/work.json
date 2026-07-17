@@ -19,7 +19,8 @@
     { "val": "cg", "label": "CG / Graphics" },
     { "val": "audio", "label": "Audio" },
     { "val": "tech", "label": "Technical Support" },
-    { "val": "td", "label": "Technical Director" }
+    { "val": "td", "label": "Technical Director" },
+    { "val": "stream", "label": "Stream Engineer" }
   ],
   "events": [
     {
@@ -79,6 +80,16 @@
       "galleryTitle": "Valorant Challengers SEA 2026 Split 2 — Grand Final (Jakarta)",
       "images": [
         { "src": "vcs-1", "caption": "SP vs. 555 — Challengers SEA Split 2 Grand Final, Day 8", "href": "https://www.youtube.com/watch?v=H0iPBi6zTqo" }
+      ]
+    },
+    {
+      "event": "ffws", "game": "freefire", "roles": ["stream"], "cover": "ffws-1",
+      "flags": [{ "label": "★ World", "live": true }, { "label": "Free Fire" }],
+      "year": "2025 · Indonesia", "title": "FFWS Global Finals 2025 — Jakarta", "role": "Stream Engineer",
+      "credits": { "platform": "YouTube", "tier": "World Championship", "viewers": "—", "organizer": "Garena / FF Esports" },
+      "galleryTitle": "FFWS Global Finals 2025 — Jakarta",
+      "images": [
+        { "src": "ffws-1", "caption": "Grand Finals — FFWS Global Finals 2025, Jakarta", "href": "https://www.youtube.com/watch?v=gzK83PJ5IUQ" }
       ]
     },
     {
