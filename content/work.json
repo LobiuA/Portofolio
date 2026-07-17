@@ -150,41 +150,6 @@
         { "src": "pmpl-3", "caption": "Caster desk — Sanskuy & Jelly" },
         { "src": "pmpl-4", "caption": "Pro League Indonesia — Be The #1" }
       ]
-    },
-    {
-      "event": "sukro", "game": "freefire", "roles": ["tech"], "cover": "sukro-1",
-      "flags": [{ "label": "Free Fire" }],
-      "year": "2024", "title": "Mas Sukro Cup — Free Fire", "role": "Technical Support",
-      "galleryTitle": "Mas Sukro Cup — Free Fire",
-      "images": [
-        { "src": "sukro-1", "caption": "Opening ceremony — main stage" },
-        { "src": "sukro-2", "caption": "Champions — Pandora Stars" },
-        { "src": "sukro-3", "caption": "In-game — MBCUP 2024 Grand Final" }
-      ]
-    },
-    {
-      "event": "pbnc", "game": "multi", "roles": ["tech", "audio"], "cover": "pbnc-1",
-      "flags": [{ "label": "Point Blank" }],
-      "year": "2025 · Indonesia", "title": "PBNC — National Championship", "role": "Technical Support — Audio",
-      "galleryTitle": "PBNC — Point Blank National Championship",
-      "images": [
-        { "src": "pbnc-1", "caption": "Talent desk" },
-        { "src": "pbnc-2", "caption": "Starting-soon countdown" },
-        { "src": "pbnc-3", "caption": "Broadcast credits — TS Audio: Jidan" },
-        { "src": "pbnc-4", "caption": "In-game — scope cam" }
-      ]
-    },
-    {
-      "event": "adrenalin", "game": "valorant", "roles": ["observer", "league"], "cover": "adr-1",
-      "flags": [{ "label": "Valorant" }],
-      "year": "S1 · S2 · S3", "title": "AMD Adrenalin Invitational", "role": "Observer · League Operation",
-      "galleryTitle": "AMD Adrenalin Valorant Invitational",
-      "images": [
-        { "src": "adr-1", "caption": "Season 1 — Main Event bracket" },
-        { "src": "adr-2", "caption": "Season 2 — Final Day" },
-        { "src": "adr-3", "caption": "Season 3 — show intro" },
-        { "src": "adr-4", "caption": "Season 3 — analyst desk" }
-      ]
     }
   ]
 }
