@@ -1,12 +1,7 @@
 {
-  "kicker": "Showreel · 2024 — 2025",
-  "heading": "60 seconds from the control room.",
-  "sub": "Switching, CG/GT graphics, audio and encoding — cuts from the live productions I've run. Full event galleries below.",
-  "platform": "youtube",
-  "videoId": "VIDEO_ID",
-  "poster": "showreel-poster",
-  "title": "Tri Muhammad Jidan — Broadcast Showreel",
-  "runtime": "0:60",
+  "kicker": "Showreel · 2024 — Present",
+  "heading": "From the control room — every event, one reel.",
+  "sub": "An auto-rotating cut across every live production I've crewed — switching, CG/GT graphics, replay, audio and stream engineering. Events with a ▶ link have a full broadcast VOD.",
   "label": "ON AIR · SHOWREEL",
-  "note": "Replace VIDEO_ID with a YouTube (or Vimeo) unlisted upload. Poster is a frame grab in /public/work/showreel-poster.jpg."
+  "note": "Auto-rotating cover slideshow across siteData.work.events + siteData.freelance.clients. Slides with a VOD href show a Watch broadcast CTA. No video embed."
 }

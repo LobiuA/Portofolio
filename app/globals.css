@@ -608,12 +608,26 @@ section.block--hero::after { display: none; }
 .showreel-frame .cam-corner { border-width: 3px; border-color: var(--live); }
 .showreel-badge { position: absolute; top: 14px; left: 14px; z-index: 4; display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--live); padding: 6px 11px; border: 2px solid var(--live); border-radius: 0; background: color-mix(in srgb, var(--bg) 70%, transparent); animation: badge-glow 1.4s ease-in-out infinite; }
 .showreel-badge .tally-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); animation: tally-pulse 1.4s ease-in-out infinite; }
-.showreel-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-.showreel-poster { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.showreel-poster:disabled { cursor: default; }
-.showreel-play { position: relative; z-index: 2; width: 78px; height: 78px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: color-mix(in srgb, var(--live) 18%, var(--bg)); color: var(--ink); font-size: 26px; padding-left: 5px; transition: transform .3s var(--ease), background .3s var(--ease); }
-.showreel-poster:hover:not(:disabled) .showreel-play { transform: scale(1.06); background: color-mix(in srgb, var(--live) 32%, var(--bg)); }
-.showreel-soon { position: relative; z-index: 2; font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); border: 1px solid var(--amber); padding: 10px 18px; background: var(--bg); }
+.showreel-stage { user-select: none; }
+.showreel-slides { position: absolute; inset: 0; }
+.showreel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .7s var(--ease); pointer-events: none; }
+.showreel-slide.active { opacity: 1; pointer-events: auto; }
+.showreel-slide .next-image { position: absolute; inset: 0; }
+.showreel-veil { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--bg) 88%, transparent) 100%); }
+.showreel-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 24px 22px; display: flex; flex-direction: column; gap: 4px; z-index: 3; }
+.showreel-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 3.4vw, 2rem); line-height: 1.05; color: var(--ink); text-shadow: 0 2px 12px color-mix(in srgb, var(--bg) 80%, transparent); }
+.showreel-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); }
+.showreel-watch { align-self: flex-start; margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+.showreel-watch:hover { background: var(--accent); color: var(--bg); }
+.showreel-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 0; background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; transition: background .25s, color .25s; }
+.showreel-nav:hover { background: var(--accent); color: var(--bg); }
+.showreel-nav.showreel-prev { left: 14px; }
+.showreel-nav.showreel-next { right: 14px; }
+.showreel-dots { position: absolute; top: 14px; right: 14px; z-index: 5; display: flex; gap: 7px; flex-wrap: wrap-reverse; max-width: 60%; justify-content: flex-end; }
+.showreel-dot { width: 9px; height: 9px; border-radius: 0; border: 1px solid var(--ink); background: transparent; padding: 0; cursor: pointer; transition: background .25s; }
+.showreel-dot.active { background: var(--live); border-color: var(--live); }
+.showreel-dot:hover { background: var(--amber); }
+@media (prefers-reduced-motion: reduce) { .showreel-slide { transition: none; } }
 .showreel-direct { display: inline-block; margin-top: 14px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); border-bottom: 2px solid var(--accent); padding-bottom: 3px; }
 
 /* ============================================================

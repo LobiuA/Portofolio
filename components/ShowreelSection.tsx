@@ -1,47 +1,65 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { blur, siteData } from '@/lib/content'
+import { blur, img, siteData } from '@/lib/content'
 
-// Lazy facade: render the poster + a big "play" until the frame scrolls into view
-// (or is clicked). Only then do we mount the iframe, so a YouTube player never lands
-// in the initial paint. Reduced-motion users get the poster + a plain off-site link.
+// Showreel = auto-rotating slideshow across every event + client cover.
+// Slides crossfade every 4s; hover pauses; dots jump; reduced-motion freezes.
+// A slide whose event has a VOD href shows a ▶ Watch broadcast CTA.
+type Slide = {
+  key: string
+  cover: string
+  title: string
+  meta: string
+  href?: string
+}
+
+const ROTATE_MS = 4000
+
 export default function ShowreelSection() {
   const s = siteData.showreel
-  const wrapRef = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState(false)
+  const slides: Slide[] = [
+    ...siteData.work.events.map((e) => ({
+      key: e.event,
+      cover: e.cover,
+      title: e.title,
+      meta: [e.year, e.role].filter(Boolean).join(' · '),
+      href: e.images.find((i) => i.href)?.href,
+    })),
+    ...siteData.freelance.clients.map((c) => ({
+      key: c.event,
+      cover: c.cover,
+      title: c.name,
+      meta: c.loc,
+      href: c.images.find((i) => i.href)?.href,
+    })),
+  ].filter((sl) => sl.cover)
+
+  const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
   const [reduce, setReduce] = useState(false)
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReduce(mq.matches)
-    if (mq.matches || active) return
-    const el = wrapRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setActive(true)
-          io.disconnect()
-        }
-      },
-      { rootMargin: '200px 0px', threshold: 0.01 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [active])
+  }, [])
 
-  const embedSrc =
-    s.platform === 'vimeo'
-      ? `https://player.vimeo.com/video/${s.videoId}?autoplay=1&title=0&byline=0`
-      : `https://www.youtube-nocookie.com/embed/${s.videoId}?autoplay=1&rel=0&modestbranding=1`
+  const next = useCallback(() => {
+    setI((p) => (p + 1) % slides.length)
+  }, [slides.length])
 
-  const hasVideo = s.videoId && s.videoId !== 'VIDEO_ID'
-  const watchHref =
-    s.platform === 'vimeo'
-      ? `https://vimeo.com/${s.videoId}`
-      : `https://youtu.be/${s.videoId}`
+  useEffect(() => {
+    if (reduce || paused || slides.length < 2) return
+    timer.current = setInterval(next, ROTATE_MS)
+    return () => {
+      if (timer.current) clearInterval(timer.current)
+    }
+  }, [reduce, paused, next, slides.length])
+
+  const goto = (idx: number) => setI((idx + slides.length) % slides.length)
+  const cur = slides[i]
 
   return (
     <section className="block" id="showreel" style={{ background: 'var(--bg)' }}>
@@ -52,57 +70,95 @@ export default function ShowreelSection() {
           <p>{s.sub}</p>
         </div>
 
-        <div className="showreel-frame" data-reveal="" ref={wrapRef}>
-          <span className="cam-corner tl" aria-hidden="true" />
-          <span className="cam-corner tr" aria-hidden="true" />
-          <span className="cam-corner bl" aria-hidden="true" />
-          <span className="cam-corner br" aria-hidden="true" />
-          <span className="showreel-badge">
-            <span className="tally-dot" aria-hidden="true" />
-            {s.label} · {s.runtime}
-          </span>
+        {cur && (
+          <div
+            className="showreel-frame showreel-stage"
+            data-reveal=""
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Event showreel"
+          >
+            <span className="cam-corner tl" aria-hidden="true" />
+            <span className="cam-corner tr" aria-hidden="true" />
+            <span className="cam-corner bl" aria-hidden="true" />
+            <span className="cam-corner br" aria-hidden="true" />
+            <span className="showreel-badge">
+              <span className="tally-dot" aria-hidden="true" />
+              {s.label} · {slides.length} EVENTS
+            </span>
 
-          {hasVideo && active && !reduce ? (
-            <iframe
-              className="showreel-iframe"
-              src={embedSrc}
-              title={s.title}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          ) : (
-            <button
-              type="button"
-              className="showreel-poster"
-              onClick={() => hasVideo && setActive(true)}
-              aria-label={hasVideo ? `Play showreel: ${s.title}` : 'Showreel coming soon'}
-              disabled={!hasVideo}
-            >
-              <Image
-                src={s.poster}
-                alt={s.title}
-                fill
-                priority
-                sizes="(max-width: 1100px) 100vw, 1200px"
-                style={{ objectFit: 'cover' }}
-                placeholder={blur('showreel-poster') ? 'blur' : 'empty'}
-                blurDataURL={blur('showreel-poster')}
-              />
-              {hasVideo ? (
-                <span className="showreel-play" aria-hidden="true">▶</span>
-              ) : (
-                <span className="showreel-soon">SHOWREEL · COMING SOON</span>
-              )}
-            </button>
-          )}
-        </div>
+            <div className="showreel-slides">
+              {slides.map((sl, idx) => (
+                <div
+                  key={sl.key}
+                  className={`showreel-slide${idx === i ? ' active' : ''}`}
+                  aria-hidden={idx !== i}
+                >
+                  <Image
+                    src={img(sl.cover)}
+                    alt={sl.title}
+                    fill
+                    sizes="(max-width: 1100px) 100vw, 1200px"
+                    priority={idx === 0}
+                    style={{ objectFit: 'cover' }}
+                    placeholder={blur(sl.cover) ? 'blur' : 'empty'}
+                    blurDataURL={blur(sl.cover)}
+                  />
+                  <div className="showreel-veil" aria-hidden="true" />
+                  <div className="showreel-cap">
+                    <div className="showreel-title">{sl.title}</div>
+                    {sl.meta && <div className="showreel-meta">{sl.meta}</div>}
+                    {sl.href && (
+                      <a
+                        className="showreel-watch"
+                        href={sl.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        ▶ Watch broadcast ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        {(!hasVideo || reduce) && hasVideo && (
-          <a className="showreel-direct" href={watchHref} target="_blank" rel="noopener noreferrer">
-            Watch on {s.platform === 'vimeo' ? 'Vimeo' : 'YouTube'} ↗
-          </a>
+            {slides.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  className="showreel-nav showreel-prev"
+                  aria-label="Previous"
+                  onClick={() => goto(i - 1)}
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="showreel-nav showreel-next"
+                  aria-label="Next"
+                  onClick={() => goto(i + 1)}
+                >
+                  ›
+                </button>
+                <div className="showreel-dots" role="tablist">
+                  {slides.map((sl, idx) => (
+                    <button
+                      key={sl.key}
+                      type="button"
+                      className={`showreel-dot${idx === i ? ' active' : ''}`}
+                      aria-label={`Go to ${sl.title}`}
+                      aria-selected={idx === i}
+                      role="tab"
+                      onClick={() => goto(idx)}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         )}
       </div>
     </section>

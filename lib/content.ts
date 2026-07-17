@@ -100,7 +100,7 @@ export const siteData = {
   },
   ledger,
   contact,
-  showreel: { ...showreelJson, poster: img(showreelJson.poster) },
+  showreel: showreelJson,
   graphics: graphicsJson,
   proof: proofJson,
   footer: general.footer,
