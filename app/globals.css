@@ -350,7 +350,7 @@ section.block--hero::after { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .bus-bar, .cam-col, .cam-label, .vmix-role, .vmix-name-line,
   .vmix-sub, .vmix-lede, .vmix-tags, .vmix-cta, .metrics-header,
-  .metric, .tc, .ticker { animation: none; opacity: 1; transform: none; }
+  .metric, .tc, .ticker, .marquee-track { animation: none; opacity: 1; transform: none; }
   .test-card { transition: none; }
 }
 
@@ -759,10 +759,14 @@ body::after {
 /* ============================================================
    INFINITE MARQUEE TICKER
    ============================================================ */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 .marquee-wrap { overflow: hidden; flex: 1; min-width: 0; }
-.marquee-track { display: flex; white-space: nowrap; will-change: transform; }
+.marquee-track { display: flex; white-space: nowrap; will-change: transform; animation: marquee-scroll 28s linear infinite; }
 .marquee-content {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-sans); font-size: 10px;
   color: var(--ink-2); letter-spacing: 0.06em;
   padding-right: 48px; flex-shrink: 0;
 }
