@@ -71,10 +71,6 @@ export default function Lightbox({
         }}
       >
         <div className="lb-frame">
-          <span className="lb-tally">
-            <span className="dot" />
-            REC
-          </span>
           <Image
             src={img(file)}
             alt={cap}
