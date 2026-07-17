@@ -18,7 +18,8 @@
     { "val": "replay", "label": "Replay" },
     { "val": "cg", "label": "CG / Graphics" },
     { "val": "audio", "label": "Audio" },
-    { "val": "tech", "label": "Technical Support" }
+    { "val": "tech", "label": "Technical Support" },
+    { "val": "td", "label": "Technical Director" }
   ],
   "events": [
     {
@@ -58,6 +59,26 @@
         { "src": "pacific-2", "caption": "Pacific studio talkshow desk" },
         { "src": "pacific-3", "caption": "Stage 2 player interview" },
         { "src": "pacific-4", "caption": "VCT Pacific Stage 2 ident" }
+      ]
+    },
+    {
+      "event": "lcq", "game": "valorant", "roles": ["td"], "cover": "lcq-1",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
+      "year": "2026 · Indonesia", "title": "VCT Pacific — Last Chance Qualifier", "role": "Technical Director",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · Qualifier", "viewers": "—", "organizer": "Riot Games / VCT" },
+      "galleryTitle": "VCT Pacific — Last Chance Qualifier 2026",
+      "images": [
+        { "src": "lcq-1", "caption": "FCY vs. 555 — LCQ Pacific Grand Finals", "href": "https://www.youtube.com/watch?v=c1Of1QrcJMY" }
+      ]
+    },
+    {
+      "event": "vcs", "game": "valorant", "roles": ["td"], "cover": "vcs-1",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
+      "year": "2026 · Indonesia", "title": "Valorant Challengers SEA — Split 2 Final (Jakarta)", "role": "Technical Director",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · League", "viewers": "—", "organizer": "Riot Games / VCT" },
+      "galleryTitle": "Valorant Challengers SEA 2026 Split 2 — Grand Final (Jakarta)",
+      "images": [
+        { "src": "vcs-1", "caption": "SP vs. 555 — Challengers SEA Split 2 Grand Final, Day 8", "href": "https://www.youtube.com/watch?v=H0iPBi6zTqo" }
       ]
     },
     {
