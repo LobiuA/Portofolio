@@ -15,10 +15,7 @@ export default function HeroSection() {
       <div className="bus-bar">
         <div className="bus-input">INPUT 01 / CAM 01</div>
         <div className="bus-program">● PROGRAM BUS · TMJ / BROADCAST PORTFOLIO</div>
-        <div className="bus-onair">
-          <span className="tally-dot" />
-          ON AIR
-        </div>
+        <div className="bus-onair">ON AIR</div>
       </div>
 
       {/* ── 3-Column Hero Body ── */}
@@ -27,15 +24,6 @@ export default function HeroSection() {
         {/* Left — Camera Input */}
         <div className="cam-col">
           <div className="cam-frame">
-            {/* Sweeping scan line */}
-            <div className="scanline" />
-
-            {/* Corner brackets */}
-            <span className="cam-corner tl" />
-            <span className="cam-corner tr" />
-            <span className="cam-corner bl" />
-            <span className="cam-corner br" />
-
             {/* Live timecode */}
             <Timecode start="00:14:22:08" />
 
@@ -55,10 +43,7 @@ export default function HeroSection() {
 
           {/* Cam Label Bar */}
           <div className="cam-label">
-            <span className="cam-label-live">
-              <span className="tally-dot" />
-              CAM 01
-            </span>
+            <span className="cam-label-live">CAM 01</span>
             <span className="cam-label-pgm">PGM</span>
           </div>
         </div>
@@ -118,10 +103,7 @@ export default function HeroSection() {
         <MarqueeTicker
           text={`${hero.marquee.join(' · ')} · ${hero.ticker.join(' · ')} · `}
         />
-        <div className="ticker-onair">
-          <span className="tally-dot" />
-          ON AIR
-        </div>
+        <div className="ticker-onair">ON AIR</div>
       </div>
     </header>
   )
