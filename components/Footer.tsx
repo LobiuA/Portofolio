@@ -9,7 +9,7 @@ export default function Footer() {
         <span className="foot-id">{footer.left}</span>
         <span className="foot-sub">{footer.right}</span>
         <span className="foot-sig">
-          <span className="tally" /> SIGNAL ACTIVE · <LiveTimecode />
+          SIGNAL ACTIVE · <LiveTimecode />
         </span>
       </div>
     </footer>
