@@ -26,19 +26,30 @@
   ],
   "clients": [
     {
-      "event": "chrislove",
+      "event": "chrislove-thayer",
       "cover": "thayer-thumb",
       "pin": "Client",
-      "name": "Chrislove Production",
+      "name": "Thayer Trophy (Chrislove Production)",
       "loc": "USA · Remote broadcast (Slack · Parsec · Companion)",
-      "desc": "Remote technical director & vMix engineer for two live broadcasts — built animated graphics wired to registration spreadsheets, routed audio busses, and authored a Companion control surface so the executive producer could run the show.",
-      "galleryTitle": "Chrislove Production — Thayer Trophy & Newport Bermuda Race",
+      "desc": "Remote technical director & vMix engineer for the Thayer Trophy live broadcast — built animated graphics wired to registration spreadsheets, routed audio busses, and authored a Companion control surface so the executive producer could run the show.",
+      "galleryTitle": "Thayer Trophy — Chrislove Production",
       "images": [
         {
           "src": "thayer-thumb",
           "caption": "Thayer Trophy — live broadcast",
           "href": "https://www.youtube.com/watch?v=OOn6ksKAC2U"
-        },
+        }
+      ]
+    },
+    {
+      "event": "chrislove-bermuda",
+      "cover": "bermuda-thumb",
+      "pin": "Client",
+      "name": "Newport Bermuda Race (Chrislove Production)",
+      "loc": "USA · Remote broadcast (Slack · Parsec · Companion)",
+      "desc": "Remote technical director & vMix engineer for the Newport Bermuda Race 2026 live broadcast — strategic partner from day one, recommended the vMix build, authored the Companion control surface, and operated from 11 time zones away.",
+      "galleryTitle": "Newport Bermuda Race 2026 — Chrislove Production",
+      "images": [
         {
           "src": "bermuda-thumb",
           "caption": "Newport Bermuda Race 2026 — live broadcast",
