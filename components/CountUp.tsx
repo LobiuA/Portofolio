@@ -1,16 +1,12 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /**
- * Counts from 0 → `value` when the number scrolls into view. Non-numeric values
- * (e.g. "Rising") are rendered as-is. Reduced-motion users see the final number
- * immediately. The `plus`/suffix sits outside the animated node so it never
- * flickers mid-count.
+ * Counts from 0 → `value` when the number scrolls into view (IntersectionObserver
+ * + rAF, ease-out-cubic). Non-numeric values (e.g. "Rising") render as-is.
+ * Reduced-motion users see the final number immediately. The `plus`/suffix sits
+ * outside the animated node so it never flickers mid-count.
  */
 export default function CountUp({
   value,
@@ -31,19 +27,28 @@ export default function CountUp({
       el.textContent = String(target)
       return
     }
-    const counter = { n: 0 }
-    const tween = gsap.to(counter, {
-      n: target,
-      duration: 1.6,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      onUpdate: () => {
-        el.textContent = String(Math.round(counter.n))
+    let raf = 0
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          io.disconnect()
+          const start = performance.now()
+          const tick = (now: number) => {
+            const t = Math.min(1, (now - start) / 1600)
+            const eased = 1 - Math.pow(1 - t, 3) // ease-out-cubic
+            el.textContent = String(Math.round(eased * target))
+            if (t < 1) raf = requestAnimationFrame(tick)
+          }
+          raf = requestAnimationFrame(tick)
+        }
       },
-    })
+      { threshold: 0.1 },
+    )
+    io.observe(el)
     return () => {
-      tween.scrollTrigger?.kill()
-      tween.kill()
+      io.disconnect()
+      cancelAnimationFrame(raf)
     }
   }, [numeric, target])
 
