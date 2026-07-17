@@ -1,18 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Barlow_Condensed, JetBrains_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import './globals.css'
 
-const barlow = Barlow_Condensed({
-  variable: '--font-barlow',
+const geist = Geist({
+  variable: '--font-geist',
   subsets: ['latin'],
-  weight: ['700', '900'],
-  display: 'swap',
-})
-
-const jetbrains = JetBrains_Mono({
-  variable: '--font-jetbrains',
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -60,7 +53,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${barlow.variable} ${jetbrains.variable}`}
+      className={geist.variable}
       suppressHydrationWarning
     >
       <head>
