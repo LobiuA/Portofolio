@@ -80,12 +80,7 @@ export default function ShowreelSection() {
             aria-roledescription="carousel"
             aria-label="Event showreel"
           >
-            <span className="cam-corner tl" aria-hidden="true" />
-            <span className="cam-corner tr" aria-hidden="true" />
-            <span className="cam-corner bl" aria-hidden="true" />
-            <span className="cam-corner br" aria-hidden="true" />
             <span className="showreel-badge">
-              <span className="tally-dot" aria-hidden="true" />
               {s.label} · {slides.length} EVENTS
             </span>
 
