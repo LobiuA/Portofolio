@@ -6,6 +6,7 @@
     { "key": "oneesports", "name": "ONE Esports" },
     { "key": "moonton", "name": "Moonton" },
     { "key": "thayer", "name": "Thayer Trophy", "src": "/work/thayer-logo.webp" },
+    { "key": "thayer-corinthian", "name": "Corinthian Cup", "src": "/work/thayer-corinthian.webp" },
     { "key": "bermuda", "name": "Newport Bermuda Race", "src": "/work/bermuda-logo.png" }
   ],
   "names": [
