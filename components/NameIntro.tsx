@@ -24,11 +24,15 @@ const SCHEDULE = buildSchedule(FULL)
 const MAX_REVEAL = Math.max(...SCHEDULE)
 
 export default function NameIntro({ onDone }: { onDone: () => void }) {
-  const [display, setDisplay] = useState(() => scramble(FULL.length))
+  // Static initial value — scrambling with Math.random() in useState initialiser
+  // would differ between server and client render and break hydration.
+  const [display, setDisplay] = useState(() => FULL.replace(/[^ ]/g, '_'))
   const [done, setDone] = useState(false)
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
+
+    setDisplay(scramble(FULL.length))
 
     // Garble cycle — random chars every 80ms
     const garbleId = setInterval(() => {
