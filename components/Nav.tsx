@@ -30,7 +30,6 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
       <a className="brand" href="#top">
-        <span className="tally" />
         <span>
           {siteData.brand.tag}
           <b>/</b>

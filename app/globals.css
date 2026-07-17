@@ -96,34 +96,28 @@ section.block--hero::after { display: none; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px var(--gut);
   transition: background .4s var(--ease);
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 .nav.scrolled {
   background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(14px) saturate(1.4);
   padding-block: 12px;
 }
-.brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 14px; letter-spacing: .02em; }
-.brand .tally {
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--live);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--live) 25%, transparent);
-  animation: tally-pulse 1.4s ease-in-out infinite;
-}
-.brand b { font-family: var(--font-mono); font-weight: 700; letter-spacing: .02em; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-sans); font-size: 14px; letter-spacing: .02em; }
+.brand b { font-family: var(--font-sans); font-weight: 700; letter-spacing: .02em; }
 
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a {
-  font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink-2); padding: 9px 13px; border-radius: 0;
   transition: color .25s, background .25s;
   position: relative;
 }
-.nav-links a:hover { color: var(--ink); background: none; }
-.nav-links a.active { color: var(--live); }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
 .nav-links a.active::after {
-  content: ""; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
-  width: 4px; height: 4px; border-radius: 50%; background: var(--live);
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: var(--ink);
 }
 @media (max-width: 880px){ .nav-links{ display:none; } }
 
@@ -131,15 +125,15 @@ section.block--hero::after { display: none; }
 
 .btn {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em;
-  padding: 13px 22px; border-radius: 0; cursor: pointer; border: 2px solid transparent;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em;
+  padding: 13px 22px; border-radius: 0; cursor: pointer; border: 1px solid transparent;
   white-space: nowrap;
   transition: transform .25s var(--ease), background .25s, border-color .25s, color .25s;
 }
-.btn-primary { background: var(--live); color: #fff; border: 2px solid var(--live); font-weight: 700; }
-.btn-primary:hover { transform: translateY(-2px); }
-.btn-ghost { border: 2px solid var(--ink); color: var(--ink); }
-.btn-ghost:hover { background: var(--surface); transform: translateY(-2px); }
+.btn-primary { background: var(--ink); color: var(--bg); border: 1px solid var(--ink); font-weight: 600; }
+.btn-primary:hover { background: var(--ink-2); border-color: var(--ink-2); transform: translateY(-2px); }
+.btn-ghost { border: none; color: var(--ink-2); background: transparent; }
+.btn-ghost:hover { color: var(--ink); }
 
 /* ============================================================
    HERO — VISION MIXER STRIP
