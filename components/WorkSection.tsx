@@ -1,13 +1,9 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { blur, img, siteData } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
-
-gsap.registerPlugin(ScrollTrigger)
 
 // pure helper — no hooks, lives at module scope so useMemo deps stay stable
 function matches(
@@ -35,41 +31,6 @@ export default function WorkSection() {
     if (s === 'standby') return 'STANDBY'
     return 'COMPLETE'
   }
-
-  // Cinematic entrance: each card scales up from 0.94 and fades in as it crosses
-  // into view. once:true means cards settle permanently, so the filter logic
-  // (which toggles .hide) never fights a half-finished animation.
-  const galleryRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const root = galleryRef.current
-    if (!root) return
-    const cards = gsap.utils.toArray<HTMLElement>(root.querySelectorAll('.ev'))
-    if (!cards.length) return
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.set(cards, { opacity: 1, scale: 1 })
-      return
-    }
-
-    const ctx = gsap.context(() => {
-      cards.forEach((card) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, scale: 0.94, y: 24 },
-          {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: card, start: 'top 88%', once: true },
-          },
-        )
-      })
-    }, root)
-
-    return () => ctx.revert()
-  }, [])
 
   // count results a filter button would yield, holding the other axis fixed
   const countFor = useMemo(
@@ -126,14 +87,16 @@ export default function WorkSection() {
               })}
             </div>
 
-            <div className="gallery" ref={galleryRef}>
-              {work.events.map((e) => {
+            <div className="gallery">
+              {work.events.map((e, i) => {
                 const open = () => openLightbox(e.event)
                 const state = stateOf(e)
                 return (
                   <article
                     key={e.event}
-                    className={`ev ev-${state}${matches(e, game, role) ? '' : ' hide'}`}
+                    className={`ev${matches(e, game, role) ? '' : ' hide'}`}
+                    data-reveal=""
+                    data-delay={(i % 3) || undefined}
                     tabIndex={0}
                     onClick={open}
                     onKeyDown={(ev) => {
@@ -164,11 +127,8 @@ export default function WorkSection() {
                     </div>
                     <div className="ev-body">
                       <div className="ev-body-header">
-                        <h3>{e.title}</h3>
-                        <span className="ev-state-badge">
-                          {state === 'onair' && <span className="tally" aria-hidden="true" />}
-                          {stateLabel(state)}
-                        </span>
+                        <h4>{e.title}</h4>
+                        <span className="ev-state-badge">{stateLabel(state)}</span>
                       </div>
                       <div className="yr">{e.year}</div>
                       <div className="ev-role">{e.role}</div>
