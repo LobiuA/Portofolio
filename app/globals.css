@@ -116,8 +116,8 @@ section.block--hero::after { display: none; }
 .nav-links a:hover { color: var(--ink); }
 .nav-links a.active { color: var(--ink); }
 .nav-links a.active::after {
-  content: ""; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 1px; background: var(--ink);
+  content: ""; position: absolute; bottom: 4px; left: 13px; right: 13px;
+  height: 1px; background: var(--line);
 }
 @media (max-width: 880px){ .nav-links{ display:none; } }
 
