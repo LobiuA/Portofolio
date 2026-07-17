@@ -807,7 +807,7 @@ section.block--hero::after { display: none; }
 .cursor-glow {
   position: fixed; top: 0; left: 0; width: 380px; height: 380px; pointer-events: none; z-index: 0;
   border-radius: 50%; transform: translate(-50%,-50%);
-  background: radial-gradient(circle, color-mix(in srgb, var(--ink-3) 12%, transparent), transparent 65%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--ink) 8%, transparent), transparent 65%);
   opacity: 0; transition: opacity .6s; mix-blend-mode: screen;
 }
 @media (hover: hover){ .cursor-glow.on { opacity: 1; } }
