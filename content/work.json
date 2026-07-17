@@ -105,15 +105,16 @@
       ]
     },
     {
-      "event": "ascension", "game": "valorant", "roles": ["replay"], "cover": "asc-1",
-      "flags": [{ "label": "Valorant" }],
+      "event": "ascension", "game": "valorant", "roles": ["replay"], "cover": "asc-vod",
+      "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
       "year": "2024 · Jakarta", "title": "Valorant Ascension Pacific — Jakarta", "role": "Replay Operator",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · Ascension", "viewers": "—", "organizer": "Riot Games / VCT" },
       "galleryTitle": "Valorant Ascension Pacific 2024 — Jakarta",
       "images": [
+        { "src": "asc-vod", "caption": "SPG vs BME — Grand Finals broadcast", "href": "https://www.youtube.com/watch?v=D8K1Zj7yrAs" },
         { "src": "asc-1", "caption": "Ascend to Greatness talkshow desk" },
         { "src": "asc-2", "caption": "Replay Operator — broadcast credits" },
-        { "src": "asc-3", "caption": "In-game replay — spike carrier down" },
-        { "src": "asc-vod", "caption": "SPG vs BME — Grand Finals broadcast", "href": "https://www.youtube.com/watch?v=D8K1Zj7yrAs" }
+        { "src": "asc-3", "caption": "In-game replay — spike carrier down" }
       ]
     },
     {
