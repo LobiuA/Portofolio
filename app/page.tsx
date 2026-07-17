@@ -8,7 +8,6 @@ import HeroSection from '@/components/HeroSection'
 import ShowreelSection from '@/components/ShowreelSection'
 import AboutSection from '@/components/AboutSection'
 import SkillsSection from '@/components/SkillsSection'
-import GraphicsSection from '@/components/GraphicsSection'
 import ExperienceSection from '@/components/ExperienceSection'
 import ProofStrip from '@/components/ProofStrip'
 import WorkSection from '@/components/WorkSection'
@@ -68,7 +67,6 @@ export default function Home() {
             <div className="wrap">
               <SkillsSection />
             </div>
-            <GraphicsSection />
             <ExperienceSection />
             <ProofStrip />
             <WorkSection />
