@@ -25,7 +25,7 @@ export default function FreelanceSection() {
             <div className="stat" key={s.label}>
               <div className="n">
                 {s.n}
-                {s.plus && <span style={{ color: 'var(--accent)' }}>{s.plus}</span>}
+                {s.plus && <span className="plus">{s.plus}</span>}
               </div>
               <div className="l">{s.label}</div>
             </div>
