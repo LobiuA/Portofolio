@@ -43,9 +43,9 @@ WordIntro (client)  →  TopBar + OverlayMenu (client)  →  01..07  →  SiteFo
 | 01 | `Hero01` | `siteData.hero` | Full viewport. Name large, bottom-left. Role + location top-right (below topbar). One hairline divider. Small scroll hint. No mixer strip, no CAM card, no timecode. |
 | 02 | `Manifesto02` | `siteData.about` + `siteData.proof` | Big statement: first paragraph of `about.body` rendered via `WordReveal`. Below, 2-col grid: left = headshot (`about.portrait`, `about.portraitBlur`), right = short bio (rest of `about.body`) + 4 stats (`proof.stats`) as hairline rows. |
 | 03 | `WorkSlider03` | `siteData.work` | Heading "SELECTED WORK". One large image ~70vw centered, auto-crossfade every 5s, pause on hover. Event name + year below. Small prev/next arrows. Click opens existing `Lightbox` via `openLightbox(event)`. Filter chips removed from this section. If only 1 event → static, no controls. |
-| 04 | `Capabilities04` | `siteData.skills` + `siteData.experience` | Accordion, one item per `skills.groups` entry. Click header → expand (`grid-template-rows 0fr→1fr`). Expanded panel lists that group's skills + related `experience` entries. First item open by default. |
-| 05 | `Freelance05` | `siteData.freelance` + `siteData.ledger` | 2-col grid of client cards (`freelance.clients`, cover + name; click → lightbox). Below: testimonial (`freelance.testimonial`) as large quote. Below: ledger (`ledger.entries`) as minimal hairline rows. |
-| 06 | `Showreel06` | `siteData.showreel` | Single full-width 16:9 video block, small heading above. Uses existing media keys (`mediaVideo`/`mediaPoster`). |
+| 04 | `Capabilities04` | `siteData.skills` + `siteData.experience` | Accordion of 3 groups, derived from `skills.roleTags` (skills.json has no `groups`): **Switching & Graphics** (vMix, CG/GT, replay), **Audio & Encoding** (audio op, encoder), **Observing & Ops** (in-game observer, league op). Click header → expand (`grid-template-rows 0fr→1fr`). Expanded panel lists that group's roles + related `experience.items`. First item open by default. |
+| 05 | `Freelance05` | `siteData.freelance` + `siteData.ledger` | 2-col grid of client cards (`freelance.clients`, cover + name; click → lightbox). Below: testimonial (`freelance.testimonial`) as large quote. Below: ledger (`ledger.rows`) as minimal hairline rows. |
+| 06 | `Showreel06` | `siteData.work` + `siteData.freelance` (covers) | showreel.json documents a **cover slideshow**, not a video. Single full-width 16:9 auto-crossfading cover slideshow across `work.events` + `freelance.clients` covers, small heading above. Slides whose event has a VOD `href` show a "Watch broadcast" CTA. Reuses the existing showreel slideshow logic, restyled to the new minimal shell. |
 | 07 | `Contact07` | `siteData.contact` | Big CTA line (from `contact.heading`) via `WordReveal`. Email as large link. Socials as hairline row. |
 | — | `SiteFooter` | `siteData.footer` | Watermark name (large, low-opacity), small nav links, copyright. Not a giant CTA (that's §07). |
 
@@ -109,7 +109,7 @@ All respect `prefers-reduced-motion`.
 ## 9. Error handling & edge cases
 
 - Slider with 1 event → static image, no controls, no interval.
-- `skills.groups` empty → `Capabilities04` renders heading only.
+- `skills.roleTags` empty → `Capabilities04` renders heading only.
 - `freelance.clients` empty → section skips grid, still shows testimonial + ledger if present.
 - Lightbox unchanged: `openLightbox(event)` from `PortfolioChrome`; works from slider and freelance cards.
 - `Intl.Segmenter` missing (old browsers) → regex fallback.
