@@ -136,6 +136,43 @@ section.block--hero::after { display: none; }
 .btn-ghost:hover { color: var(--ink); }
 
 /* ============================================================
+   NAME INTRO
+   ============================================================ */
+.name-intro {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px;
+  opacity: 1; transition: opacity .4s var(--ease);
+}
+.name-intro.is-done { opacity: 0; pointer-events: none; }
+.name-intro-scanline {
+  position: absolute; left: 0; right: 0; top: 50%; height: 2px;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--ink) 14%, transparent), transparent);
+  animation: enter-fade 1.6s linear infinite;
+  pointer-events: none;
+}
+.name-intro-name {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: clamp(40px, 8vw, 90px);
+  color: var(--ink); letter-spacing: -0.01em; text-align: center; line-height: 1;
+  margin: 0; opacity: 0;
+}
+.name-intro-name.is-locked { animation: enter-up 0.5s var(--ease) both; }
+.name-intro-name .is-scrambling { color: var(--ink-3); }
+.name-intro-tc {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-intro { transition: opacity 0.01s; }
+  .name-intro-scanline { display: none; }
+  .name-intro-name { opacity: 1; }
+  .name-intro-name.is-locked { animation: none; }
+}
+
+/* ============================================================
    HERO — VISION MIXER STRIP
    ============================================================ */
 
