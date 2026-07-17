@@ -283,9 +283,9 @@ section.block--hero::after { display: none; }
 }
 .vmix-name-wrap { overflow: hidden; }
 .vmix-name-line {
-  font-family: var(--font-display); font-weight: 900;
+  font-family: var(--font-sans); font-weight: 800;
   font-size: clamp(44px, 8vw, 76px);
-  line-height: .88; text-transform: uppercase; letter-spacing: -0.01em;
+  line-height: .92; letter-spacing: -0.03em;
   color: var(--ink); margin: 0;
 }
 .vmix-name-wrap:nth-child(2) .vmix-name-line { animation: enter-up 0.55s ease 0.42s both; }
@@ -335,8 +335,8 @@ section.block--hero::after { display: none; }
 .metric:nth-child(3) { animation: enter-up 0.5s ease 0.62s both; }
 .metric:nth-child(4) { animation: enter-up 0.5s ease 0.78s both; }
 .metric-n {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: 40px; line-height: 1; color: var(--ink);
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: 40px; line-height: 1; color: var(--ink); letter-spacing: -0.02em;
 }
 .metric-l {
   font-family: var(--font-sans); font-size: 9px;
@@ -376,12 +376,6 @@ section.block--hero::after { display: none; }
   .ticker { flex-wrap: wrap; gap: 8px; }
 }
 
-/* ── WorkSection pinned layout ── */
-.work-pinned-layout { display: grid; grid-template-columns: 280px 1fr; gap: 36px; }
-@media (max-width: 980px) {
-  .work-pinned-layout { grid-template-columns: 1fr; gap: 24px; }
-  .work-pin-left { position: relative !important; }
-}
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
