@@ -1,0 +1,32 @@
+{
+  "kicker": "Motion Graphics · vMix GT Title",
+  "heading": "Graphics packages I built, not just ran.",
+  "sub": "Lower-thirds, scorebugs, idents and transitions authored from scratch in vMix GT Title Designer and deployed across live esports broadcasts.",
+  "items": [
+    {
+      "id": "gt-lower-third",
+      "title": "Player lower-third system",
+      "type": "Lower-third",
+      "tools": "vMix GT Title · GT Designer",
+      "media": "gt-lower-third",
+      "caption": "Animated player intro lower-third with auto-swap data binding."
+    },
+    {
+      "id": "gt-scorebug",
+      "title": "Match scorebug",
+      "type": "Scorebug",
+      "tools": "vMix GT Title · Data source",
+      "media": "gt-scorebug",
+      "caption": "Live score, round timer and series bracket bound to a data source."
+    },
+    {
+      "id": "gt-ident",
+      "title": "Show ident / bumper",
+      "type": "Ident",
+      "tools": "vMix GT Title · After Effects",
+      "media": "gt-ident",
+      "caption": "Show-open ident animated in, then handed to GT for live titling."
+    }
+  ],
+  "note": "Swap each item's media key for a GIF/WebM in /public/work (e.g. gt-lower-third.webm) or a JPG fallback of the same name. Add more items to taste."
+}

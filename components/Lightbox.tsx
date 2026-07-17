@@ -41,7 +41,7 @@ export default function Lightbox({
 
   if (!data) return null
 
-  const [file, cap] = data.imgs[i]
+  const [file, cap, href] = data.imgs[i]
 
   return (
     <div
@@ -89,6 +89,11 @@ export default function Lightbox({
         <div className="lb-meta">
           <div className="lb-title">{data.title}</div>
           <div className="lb-caption">{cap}</div>
+          {href && (
+            <a className="lb-link" href={href} target="_blank" rel="noopener noreferrer">
+              ▶ Watch broadcast ↗
+            </a>
+          )}
           <div className="lb-index">
             {i + 1} / {data.imgs.length}
           </div>

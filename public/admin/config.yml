@@ -222,6 +222,61 @@ collections:
               - { name: title, label: Title, widget: string }
               - { name: meta, label: Meta, widget: string }
 
+      # ---------------- SHOWREEL ----------------
+      - name: showreel
+        label: "Showreel"
+        file: "content/showreel.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - { name: platform, label: "Platform (youtube/vimeo)", widget: string, default: youtube }
+          - { name: videoId, label: "Video ID", widget: string, hint: "YouTube or Vimeo id (unlisted). Leave as VIDEO_ID to show a 'coming soon' placeholder." }
+          - { name: poster, label: "Poster image key", widget: string, hint: "Filename in /public/work without .jpg" }
+          - { name: title, label: "Video title (a11y)", widget: string }
+          - { name: runtime, label: "Runtime label (e.g. 0:60)", widget: string }
+          - { name: label, label: "Badge label (e.g. ON AIR · SHOWREEL)", widget: string }
+
+      # ---------------- GRAPHICS ----------------
+      - name: graphics
+        label: "Motion Graphics"
+        file: "content/graphics.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - name: items
+            label: "Graphics items"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: "Unique id", widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: type, label: "Type (Lower-third / Scorebug / Ident)", widget: string }
+              - { name: tools, label: "Tools", widget: string }
+              - { name: media, label: "Media key", widget: string, hint: "Filename in /public/work without extension. .webm preferred (loops silent), .jpg fallback." }
+              - { name: caption, label: Caption, widget: text }
+
+      # ---------------- PROOF ----------------
+      - name: proof
+        label: "Proof / Credits"
+        file: "content/proof.json"
+        fields:
+          - { name: kicker, label: Kicker, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: sub, label: Subheading, widget: text }
+          - name: logos
+            label: "Organizer wordmarks"
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: key, label: "Key", widget: string }
+              - { name: name, label: "Display name", widget: string }
+          - name: names
+            label: "Other productions (text list)"
+            widget: list
+            field: { name: name, label: Name, widget: string }
+
       # ---------------- CONTACT ----------------
       - name: contact
         label: "Contact"

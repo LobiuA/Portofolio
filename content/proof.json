@@ -1,0 +1,20 @@
+{
+  "kicker": "Worked alongside · Selected productions",
+  "heading": "Productions I've crewed.",
+  "sub": "Events operated across international and regional stages — listed for editorial reference, not as endorsement.",
+  "logos": [
+    { "key": "oneesports", "name": "ONE Esports" },
+    { "key": "moonton", "name": "Moonton" },
+    { "key": "thayer", "name": "Thayer Trophy", "src": "/work/thayer-logo.webp" },
+    { "key": "bermuda", "name": "Newport Bermuda Race", "src": "/work/bermuda-logo.png" }
+  ],
+  "names": [
+    "VCT Pacific",
+    "Valorant Masters",
+    "M3 World Championship",
+    "MPL Invitational",
+    "PMPL Indonesia",
+    "Predator League",
+    "PBNC"
+  ]
+}

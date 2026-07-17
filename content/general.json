@@ -1,9 +1,10 @@
 {
   "brand": { "tag": "TMJ", "label": "Broadcast" },
   "nav": [
+    { "label": "Reel", "href": "#showreel" },
     { "label": "About", "href": "#about" },
     { "label": "Skills", "href": "#skills" },
-    { "label": "Experience", "href": "#experience" },
+    { "label": "Graphics", "href": "#graphics" },
     { "label": "Events", "href": "#work" },
     { "label": "Freelance", "href": "#freelance" },
     { "label": "Contact", "href": "#contact" }

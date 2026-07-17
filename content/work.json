@@ -25,6 +25,7 @@
       "event": "toronto", "game": "valorant", "roles": ["cg"], "cover": "toronto-1",
       "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
       "year": "2025 · Canada", "title": "Valorant Masters Toronto", "role": "CG Operator · vMix",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · Masters", "viewers": "—", "organizer": "Riot Games / VCT" },
       "galleryTitle": "Valorant Masters Toronto 2025",
       "images": [
         { "src": "toronto-1", "caption": "Tournament key art — Toronto skyline" },
@@ -37,6 +38,7 @@
       "event": "bangkok", "game": "valorant", "roles": ["audio"], "cover": "bangkok-1",
       "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
       "year": "2025 · Thailand", "title": "Valorant Masters Bangkok", "role": "Audio Operator",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · Masters", "viewers": "—", "organizer": "Riot Games / VCT" },
       "galleryTitle": "Valorant Masters Bangkok 2025",
       "images": [
         { "src": "bangkok-1", "caption": "Tournament key art — Bangkok skyline" },
@@ -49,6 +51,7 @@
       "event": "pacific", "game": "valorant", "roles": ["cg", "audio"], "cover": "pacific-1",
       "flags": [{ "label": "★ Int'l", "live": true }, { "label": "Valorant" }],
       "year": "2025 · Indonesia & Taiwan", "title": "VCT Pacific — Stage 1 & 2", "role": "CG & Audio Operator",
+      "credits": { "platform": "YouTube · Twitch", "tier": "International · League", "viewers": "—", "organizer": "Riot Games / VCT" },
       "galleryTitle": "VCT Pacific — Stage 1 & 2",
       "images": [
         { "src": "pacific-1", "caption": "Rise Pacific key art — Stage 1" },
@@ -61,6 +64,7 @@
       "event": "m3", "game": "mlbb", "roles": ["encoder"], "cover": "m3-1",
       "flags": [{ "label": "★ World", "live": true }, { "label": "MLBB" }],
       "year": "MLBB World Championship", "title": "M3 World Championship", "role": "Stream Encoder Operator",
+      "credits": { "platform": "YouTube · Facebook", "tier": "World Championship", "viewers": "—", "organizer": "Moonton" },
       "galleryTitle": "M3 World Championship",
       "images": [
         { "src": "m3-1", "caption": "Grand Final analyst desk — To The Top" },

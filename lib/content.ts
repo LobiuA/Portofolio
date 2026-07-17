@@ -12,9 +12,18 @@ import workRaw from '@/content/work.json'
 import freelanceRaw from '@/content/freelance.json'
 import ledger from '@/content/ledger.json'
 import contact from '@/content/contact.json'
+import showreelJson from '@/content/showreel.json'
+import graphicsJson from '@/content/graphics.json'
+import proofJson from '@/content/proof.json'
 import blurMap from '@/lib/blur.json'
 
 export const img = (key: string) => `/work/${key}.jpg`
+
+// Motion-graphics gallery media lives as .webm (preferred, loops silent) or falls back
+// to a .gif/.jpg of the same key. The component picks whichever resolves; keys without
+// an asset show a placeholder frame.
+export const mediaVideo = (key: string) => `/work/${key}.webm`
+export const mediaPoster = (key: string) => `/work/${key}.jpg`
 
 // Tiny base64 LQIP for a given image key (see scripts/gen-blur.mjs). Returns undefined
 // when no placeholder was generated, so callers can skip placeholder="blur" safely.
@@ -25,6 +34,7 @@ export const blur = (key: string): string | undefined => blurs[key]
 interface ImageRef {
   src: string
   caption: string
+  href?: string
 }
 interface Flag {
   label: string
@@ -42,6 +52,7 @@ interface WorkEvent {
   galleryTitle: string
   images: ImageRef[]
   count: number
+  credits?: { platform?: string; tier?: string; viewers?: string; organizer?: string }
 }
 interface Client {
   event: string
@@ -89,17 +100,20 @@ export const siteData = {
   },
   ledger,
   contact,
+  showreel: { ...showreelJson, poster: img(showreelJson.poster) },
+  graphics: graphicsJson,
+  proof: proofJson,
   footer: general.footer,
 }
 
-// Rebuild the keyed gallery sets the Lightbox expects: { [event]: { title, imgs: [src, caption][] } }
-export const galleryData: Record<string, { title: string; imgs: [string, string][] }> =
+// Rebuild the keyed gallery sets the Lightbox expects: { [event]: { title, imgs: [src, caption, href?][] } }
+export const galleryData: Record<string, { title: string; imgs: [string, string, string?][] }> =
   Object.fromEntries(
     [...workEvents, ...freelanceClients].map((item) => [
       item.event,
       {
         title: item.galleryTitle,
-        imgs: item.images.map((im): [string, string] => [im.src, im.caption]),
+        imgs: item.images.map((im): [string, string, string?] => [im.src, im.caption, im.href]),
       },
     ]),
   )

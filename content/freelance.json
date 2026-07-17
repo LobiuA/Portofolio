@@ -26,6 +26,27 @@
   ],
   "clients": [
     {
+      "event": "chrislove",
+      "cover": "thayer-thumb",
+      "pin": "Client",
+      "name": "Chrislove Production",
+      "loc": "USA · Remote broadcast (Slack · Parsec · Companion)",
+      "desc": "Remote technical director & vMix engineer for two live broadcasts — built animated graphics wired to registration spreadsheets, routed audio busses, and authored a Companion control surface so the executive producer could run the show.",
+      "galleryTitle": "Chrislove Production — Thayer Trophy & Newport Bermuda Race",
+      "images": [
+        {
+          "src": "thayer-thumb",
+          "caption": "Thayer Trophy — live broadcast",
+          "href": "https://www.youtube.com/watch?v=OOn6ksKAC2U"
+        },
+        {
+          "src": "bermuda-thumb",
+          "caption": "Newport Bermuda Race 2026 — live broadcast",
+          "href": "https://www.youtube.com/watch?v=qLPQ6OCsvrY"
+        }
+      ]
+    },
+    {
       "event": "tachartas",
       "cover": "tach-1",
       "pin": "Client",
@@ -100,6 +121,16 @@
       "quote": "“I’m highly satisfied with Tri Muhammad Jidan’s excellent work setting up my studio. His professionalism, dedication, and attention to detail were impressive. The job was done promptly and affordably. If I could give more than 5 stars, I would. Highly recommended!”",
       "stars": "★★★★★",
       "cite": "Tuyen — Streaming & Broadcast Studio Setup, Upwork"
+    },
+    {
+      "quote": "Tri saved my live broadcast! He stepped in as technical director at the last minute, remotely getting our live stream up and running, creating onscreen graphics from scratch, and saving us from failure. His experience, technical acumen, and easygoing personality under pressure make him an invaluable member of any broadcast team.",
+      "stars": "★★★★★",
+      "cite": "Chris Love — Executive Producer, Thayer Trophy"
+    },
+    {
+      "quote": "Tri was my strategic partner from day one — we followed his recommendation to build the show in vMix and I'm so glad we did. He created all the animated graphics, wired them to complex registration spreadsheets, routed the audio busses, and built a Companion interface so I could control everything. Despite an 11-hour time difference, he was one of the most valuable people in the control room.",
+      "stars": "★★★★★",
+      "cite": "Chris Love — Executive Producer, Newport Bermuda Race"
     }
   ]
 }

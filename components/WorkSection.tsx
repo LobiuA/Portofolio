@@ -172,6 +172,22 @@ export default function WorkSection() {
                       </div>
                       <div className="yr">{e.year}</div>
                       <div className="ev-role">{e.role}</div>
+                      {e.credits && (
+                        <dl className="ev-credits">
+                          {e.credits.organizer && (
+                            <div><dt>Organizer</dt><dd>{e.credits.organizer}</dd></div>
+                          )}
+                          {e.credits.tier && (
+                            <div><dt>Tier</dt><dd>{e.credits.tier}</dd></div>
+                          )}
+                          {e.credits.platform && (
+                            <div><dt>Platform</dt><dd>{e.credits.platform}</dd></div>
+                          )}
+                          {e.credits.viewers && (
+                            <div><dt>Peak viewers</dt><dd>{e.credits.viewers}</dd></div>
+                          )}
+                        </dl>
+                      )}
                     </div>
                   </article>
                 )

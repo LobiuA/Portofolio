@@ -8,8 +8,8 @@
   },
   "lede": "Five years on production crews behind Valorant, Mobile Legends, PUBG Mobile and Free Fire events — from regional qualifiers to international Masters stages.",
   "cta": [
-    { "label": "View event work", "href": "#work", "primary": true },
-    { "label": "Get in touch", "href": "#contact", "primary": false }
+    { "label": "Watch showreel", "href": "#showreel", "primary": true },
+    { "label": "View event work", "href": "#work", "primary": false }
   ],
   "headshot": "headshot",
   "stats": [
