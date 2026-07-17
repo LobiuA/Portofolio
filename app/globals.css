@@ -360,37 +360,24 @@ section.block--hero::after { display: none; }
    ============================================================ */
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(28px,5vw,72px); align-items: center; }
 @media (max-width: 880px){ .about-grid{ grid-template-columns: 1fr; } }
-.about-portrait { position: relative; }
 .about-portrait-frame {
   position: relative; overflow: hidden;
   height: clamp(360px, 46vw, 560px);
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
 }
-/* taller than the frame so the parallax drift (±28px) never exposes an edge */
-.about-portrait-inner { position: absolute; inset: -36px 0; will-change: transform; }
+.about-portrait-inner { position: absolute; inset: 0; }
 .about-portrait-inner img {
   width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
   border-radius: 0; filter: grayscale(.12);
 }
-.about-portrait .frame-corner { position: absolute; width: 26px; height: 26px; border: 2px solid var(--live); z-index: 3; }
-.about-portrait .frame-corner.tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-.about-portrait .frame-corner.br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
-.about-portrait .frame-tag {
-  position: absolute; top: 14px; left: 14px; z-index: 3;
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em;
-  background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px);
-  border: 1px solid var(--line); padding: 6px 10px; border-radius: 0;
-  display: flex; align-items: center; gap: 7px;
-}
-.about-portrait .frame-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
 .about-copy p { font-size: clamp(18px,2.2vw,23px); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
 .about-copy p + p { margin-top: 20px; color: var(--ink-2); font-size: clamp(16px,1.9vw,19px); }
-.about-copy .mark { color: var(--amber); font-weight: 700; }
+.about-copy .mark { color: var(--ink); font-weight: 700; font-style: italic; }
 .interest-inline { margin-top: 30px; }
-.interest-inline h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
+.interest-inline h4 { font-family: var(--font-sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 14px; }
 .chips { display: flex; flex-wrap: wrap; gap: 9px; }
-.chip { font-family: var(--font-mono); font-size: 13px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 0; color: var(--ink-2); transition: border-color .25s, color .25s; }
-.chip:hover { border-color: var(--amber); color: var(--ink); }
+.chip { font-family: var(--font-sans); font-size: 13px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 0; color: var(--ink-2); transition: border-color .25s, color .25s; }
+.chip:hover { border-color: var(--ink); color: var(--ink); }
 
 /* ============================================================
    SKILLS / TOOLS
@@ -808,11 +795,6 @@ body::after {
   color: var(--ink-2); letter-spacing: 0.06em;
   padding-right: 48px; flex-shrink: 0;
 }
-
-/* ============================================================
-   WORD REVEAL (ABOUT)
-   ============================================================ */
-.word-reveal { display: inline; will-change: opacity; }
 
 /* ============================================================
    WORK SECTION — PINNED LAYOUT
