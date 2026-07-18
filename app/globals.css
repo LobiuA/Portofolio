@@ -961,3 +961,31 @@ body::after {
 .m02-num { font-family: var(--font-sans); font-size: 32px; font-weight: 600; }
 .m02-lbl { font-family: var(--font-sans); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-2); }
 @media (max-width: 700px) { .m02-cols { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ============================================================
+   03 WORK SLIDER
+   ============================================================ */
+.w03 { padding-block: clamp(72px, 9vw, 120px); }
+.w03 .kicker { margin-bottom: 40px; }
+.w03-frame {
+  width: 70vw; max-width: 1100px; margin: 0 auto; position: relative;
+  aspect-ratio: 16/10; border: 1px solid var(--line); overflow: hidden;
+  background: var(--bg-2); cursor: pointer;
+}
+.w03-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s var(--ease); }
+.w03-slide.on { opacity: 1; }
+.w03-cap {
+  width: 70vw; max-width: 1100px; margin: 20px auto 0;
+  display: flex; justify-content: space-between; align-items: center; padding-inline: 0;
+}
+.w03-name { font-family: var(--font-sans); font-size: 15px; color: var(--ink); }
+.w03-year { font-family: var(--font-sans); font-size: 13px; color: var(--ink-2); }
+.w03-nav { display: flex; gap: 8px; }
+.w03-nav button {
+  width: 40px; height: 40px; background: none; border: 1px solid var(--line);
+  color: var(--ink); cursor: pointer; font-size: 16px;
+  transition: border-color .25s var(--ease);
+}
+.w03-nav button:hover { border-color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .w03-slide { transition: none; } }
+@media (max-width: 700px) { .w03-frame, .w03-cap { width: 100%; } }
