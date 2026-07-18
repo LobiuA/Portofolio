@@ -1013,3 +1013,36 @@ body::after {
 .c04-pad li:last-child { border-bottom: 0; }
 @media (prefers-reduced-motion: reduce) { .c04-body { transition: none; } }
 @media (max-width: 700px) { .c04-pad { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   05 FREELANCE
+   ============================================================ */
+.f05 { padding-block: clamp(72px, 9vw, 120px); }
+.f05 .kicker { margin-bottom: 40px; }
+.f05-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 80px; }
+.f05-card {
+  position: relative; aspect-ratio: 4/3; border: 1px solid var(--line); overflow: hidden;
+  background: var(--bg-2); cursor: pointer; padding: 0; display: block; text-align: left;
+}
+.f05-card-name {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 16px 20px;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em; color: var(--ink);
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg) 82%, transparent));
+}
+.f05-quote {
+  font-family: var(--font-sans); font-weight: 500; font-size: clamp(22px, 3vw, 36px);
+  line-height: 1.4; max-width: 34ch; margin: 0 auto 80px; text-align: center; color: var(--ink);
+}
+.f05-quote small { display: block; margin-top: 20px; font-size: 12px; color: var(--ink-2); letter-spacing: .1em; }
+.f05-ledger { border-top: 1px solid var(--line); }
+.f05-row {
+  display: grid; grid-template-columns: 44px 1fr auto; gap: 24px; align-items: baseline;
+  padding: 16px 0; border-bottom: 1px solid var(--line); font-family: var(--font-sans); font-size: 14px;
+}
+.f05-y { color: var(--ink-3); }
+.f05-meta { color: var(--ink-2); font-size: 12px; letter-spacing: .03em; text-align: right; }
+@media (max-width: 700px) {
+  .f05-grid { grid-template-columns: 1fr; }
+  .f05-row { grid-template-columns: 36px 1fr; }
+  .f05-meta { display: none; }
+}
