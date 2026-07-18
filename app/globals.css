@@ -844,3 +844,24 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .word-reveal-w { opacity: 1; transform: none; transition: none; }
 }
+
+/* ============================================================
+   WORD INTRO
+   ============================================================ */
+.word-intro {
+  position: fixed; inset: 0; z-index: 9999; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1; transition: opacity .5s var(--ease);
+}
+.word-intro.is-leaving { opacity: 0; pointer-events: none; }
+.word-intro-name {
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: clamp(32px, 6vw, 72px); letter-spacing: -.01em;
+  color: var(--ink); text-align: center; line-height: 1; margin: 0;
+}
+.word-intro-name span {
+  display: inline-block; opacity: 0; transform: translateY(12px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.word-intro-name span.on { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .word-intro { display: none; } }
