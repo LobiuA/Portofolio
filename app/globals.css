@@ -865,3 +865,52 @@ body::after {
 }
 .word-intro-name span.on { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .word-intro { display: none; } }
+
+/* ============================================================
+   TOPBAR + OVERLAY MENU
+   ============================================================ */
+.topbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px var(--gut);
+  background: transparent; border-bottom: 1px solid transparent;
+  transition: background .3s var(--ease), border-color .3s var(--ease);
+}
+.topbar.scrolled { background: var(--bg); border-bottom-color: var(--line); }
+.topbar-brand { font-family: var(--font-sans); font-weight: 600; font-size: 13px; letter-spacing: .12em; }
+.topbar-menu {
+  background: none; border: 0; color: var(--ink); cursor: pointer;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+}
+.overlay-menu {
+  position: fixed; inset: 0; z-index: 80;
+  background: color-mix(in srgb, var(--bg) 98%, transparent);
+  display: flex; flex-direction: column; justify-content: center; padding: 0 var(--gut);
+  opacity: 0; pointer-events: none; transition: opacity .35s var(--ease);
+}
+.overlay-menu.open { opacity: 1; pointer-events: auto; }
+.overlay-close {
+  position: absolute; top: 20px; right: var(--gut);
+  background: none; border: 0; color: var(--ink); font-size: 24px; cursor: pointer; line-height: 1;
+}
+.overlay-links a {
+  display: block; font-family: var(--font-sans); font-weight: 500;
+  font-size: clamp(40px, 7vw, 84px); line-height: 1.15; color: var(--ink);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.overlay-menu.open .overlay-links a { opacity: 1; transform: translateY(0); }
+.overlay-menu.open .overlay-links a:nth-child(1) { transition-delay: .05s; }
+.overlay-menu.open .overlay-links a:nth-child(2) { transition-delay: .11s; }
+.overlay-menu.open .overlay-links a:nth-child(3) { transition-delay: .17s; }
+.overlay-menu.open .overlay-links a:nth-child(4) { transition-delay: .23s; }
+.overlay-menu.open .overlay-links a:nth-child(5) { transition-delay: .29s; }
+.overlay-menu.open .overlay-links a:nth-child(6) { transition-delay: .35s; }
+.overlay-foot {
+  position: absolute; bottom: 32px; left: var(--gut); right: var(--gut);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-sans); font-size: 12px; letter-spacing: .1em; color: var(--ink-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay-links a { transition: none; opacity: 1; transform: none; }
+}
