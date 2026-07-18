@@ -939,3 +939,25 @@ body::after {
 }
 .h01-hint { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
 @media (max-width: 700px) { .h01-meta { position: static; text-align: left; margin: 96px 0 auto; } }
+
+/* ============================================================
+   02 MANIFESTO
+   ============================================================ */
+.m02 { padding-block: clamp(96px, 12vw, 160px); }
+.m02-statement {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: clamp(28px, 4.2vw, 56px); line-height: 1.25; letter-spacing: -.01em;
+  max-width: 22ch; margin: 28px 0 80px;
+}
+.m02-cols { display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start; }
+.m02-photo { position: relative; aspect-ratio: 3/4; border: 1px solid var(--line); overflow: hidden; }
+.m02-bio p { font-size: clamp(16px, 1.9vw, 19px); line-height: 1.8; color: var(--ink-2); margin-bottom: 32px; }
+.m02-bio p .mark { color: var(--ink); font-weight: 600; }
+.m02-stats { border-top: 1px solid var(--line); }
+.m02-stat {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.m02-num { font-family: var(--font-sans); font-size: 32px; font-weight: 600; }
+.m02-lbl { font-family: var(--font-sans); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-2); }
+@media (max-width: 700px) { .m02-cols { grid-template-columns: 1fr; gap: 40px; } }
