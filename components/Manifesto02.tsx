@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { siteData } from '@/lib/content'
 import WordReveal from '@/components/WordReveal'
 
-const stripTags = (s: string) => s.replace(/<[^>]+>/g, '')
+const stripTags = (s: string) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&')
 
 export default function Manifesto02() {
   const { about, hero } = siteData
@@ -28,6 +28,18 @@ export default function Manifesto02() {
           {about.paras.slice(1).map((p, i) => (
             <p key={i} data-reveal dangerouslySetInnerHTML={{ __html: p }} />
           ))}
+          {about.chips && about.chips.length > 0 && (
+            <div className="m02-chips" data-reveal>
+              <h4>{about.interestsLabel || 'Interests'}</h4>
+              <div className="m02-chips-list">
+                {about.chips.map((c: string) => (
+                  <span key={c} className="m02-chip">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="m02-stats" data-reveal>
             {hero.stats.map((s) => (
               <div className="m02-stat" key={s.label}>
