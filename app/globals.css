@@ -830,3 +830,17 @@ body::after {
 @keyframes enter-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 @keyframes enter-fade { from { opacity:0; } to { opacity:1; } }
 @keyframes fade-scale { from { opacity:0; transform:scale(.96); } to { opacity:1; transform:scale(1); } }
+
+/* ============================================================
+   WORD REVEAL
+   ============================================================ */
+.word-reveal-w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.word-reveal.in .word-reveal-w { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal-w { opacity: 1; transform: none; transition: none; }
+}
