@@ -1064,3 +1064,41 @@ body::after {
   background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg) 80%, transparent));
 }
 @media (prefers-reduced-motion: reduce) { .s06-slide { transition: none; } }
+
+/* ============================================================
+   07 CONTACT
+   ============================================================ */
+.ct07 { padding-block: clamp(96px, 12vw, 160px); }
+.ct07-h {
+  font-family: var(--font-sans); font-weight: 600; font-size: clamp(40px, 7vw, 96px);
+  line-height: 1.05; letter-spacing: -.02em; max-width: 16ch; margin: 24px 0 48px;
+}
+.ct07-mail {
+  font-family: var(--font-sans); font-size: clamp(20px, 3vw, 32px); color: var(--ink);
+  border-bottom: 1px solid var(--line); padding-bottom: 6px;
+  transition: border-color .25s var(--ease);
+}
+.ct07-mail:hover { border-color: var(--ink); }
+.ct07-social {
+  margin-top: 56px; border-top: 1px solid var(--line); padding-top: 20px;
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.ct07-social a {
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-2); transition: color .25s var(--ease);
+}
+.ct07-social a:hover { color: var(--ink); }
+
+/* ============================================================
+   SITE FOOTER
+   ============================================================ */
+.sf { padding: 120px 0 32px; border-top: 1px solid var(--line); overflow: hidden; }
+.sf-wm {
+  font-family: var(--font-sans); font-weight: 700; font-size: clamp(80px, 18vw, 260px);
+  line-height: .9; letter-spacing: -.03em; white-space: nowrap; user-select: none;
+  color: transparent; -webkit-text-stroke: 1px var(--line); text-align: center;
+}
+.sf-bar {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 48px;
+  font-family: var(--font-sans); font-size: 12px; color: var(--ink-2); letter-spacing: .1em;
+}
