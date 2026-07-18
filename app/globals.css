@@ -989,3 +989,27 @@ body::after {
 .w03-nav button:hover { border-color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .w03-slide { transition: none; } }
 @media (max-width: 700px) { .w03-frame, .w03-cap { width: 100%; } }
+
+/* ============================================================
+   04 CAPABILITIES ACCORDION
+   ============================================================ */
+.c04 { padding-block: clamp(72px, 9vw, 120px); }
+.c04-acc { border-top: 1px solid var(--line); margin-top: 40px; }
+.c04-item { border-bottom: 1px solid var(--line); }
+.c04-head {
+  width: 100%; background: none; border: 0; color: var(--ink); cursor: pointer; text-align: left;
+  display: flex; justify-content: space-between; align-items: center; padding: 28px 0;
+  font-family: var(--font-sans); font-weight: 500; font-size: clamp(20px, 2.6vw, 32px);
+}
+.c04-pm { color: var(--ink-2); font-size: 24px; transition: transform .3s var(--ease); }
+.c04-item.open .c04-pm { transform: rotate(45deg); }
+.c04-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+.c04-item.open .c04-body { grid-template-rows: 1fr; }
+.c04-inner { overflow: hidden; }
+.c04-pad { padding: 0 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.c04-pad h4 { font-family: var(--font-sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 14px; }
+.c04-pad ul { list-style: none; }
+.c04-pad li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.c04-pad li:last-child { border-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { .c04-body { transition: none; } }
+@media (max-width: 700px) { .c04-pad { grid-template-columns: 1fr; } }
