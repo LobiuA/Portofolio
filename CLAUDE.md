@@ -10,7 +10,7 @@ Premium, typography-driven single-page portfolio. **Signal Minimal × Lucas** lo
 
 ## Stack
 Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 (imported, styling is plain hand-written CSS in `globals.css`) · Lenis smooth scroll.
-> Motion is pure CSS and IntersectionObserver. No GSAP or Framer Motion used.
+> Motion is mostly CSS + IntersectionObserver. GSAP (ScrollTrigger) is used only in `WorkSlider03.tsx` for the pinned work gallery. No Framer Motion.
 
 ## Commands
 ```bash

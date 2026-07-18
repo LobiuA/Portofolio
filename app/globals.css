@@ -291,6 +291,7 @@ body::after {
 }
 .h01-grid {
   display: grid; grid-template-columns: 1fr; gap: 40px; width: 100%; align-items: flex-end;
+  position: relative; z-index: 2;
 }
 .h01-name {
   font-family: var(--font-sans); font-weight: 600;
@@ -303,14 +304,26 @@ body::after {
   font-family: var(--font-sans); font-size: 13px; color: var(--ink-2); letter-spacing: .04em;
 }
 .h01-hint { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
-.h01-aside { width: 100%; }
 .h01-photo {
-  position: relative; aspect-ratio: 4/5; border: 1px solid var(--line); overflow: hidden;
-  background: var(--bg-2); width: 100%; max-width: 320px;
+  position: absolute;
+  right: var(--gut);
+  top: 35%; /* fallback mobile */
+  width: 55vw;
+  max-width: 240px;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.25;
 }
 @media (min-width: 769px) {
-  .h01-grid { grid-template-columns: 1fr 320px; gap: 64px; }
-  .h01-photo { max-width: none; }
+  .h01-photo {
+    top: 5%; /* Langsung dikunci ke 5% dari atas, tanpa transform */
+    width: auto;
+    max-width: none;
+    height: clamp(520px, 70vh, 800px);
+    opacity: 1;
+  }
 }
 @media (max-width: 700px) { .h01-meta { position: static; text-align: left; margin: 96px 0 auto; } }
 
@@ -346,30 +359,42 @@ body::after {
 /* ============================================================
    03 WORK SLIDER
    ============================================================ */
-.w03 { padding-block: clamp(72px, 9vw, 120px); }
+.w03 { padding-block: clamp(72px, 9vw, 120px); overflow: hidden; }
 .w03 .kicker { margin-bottom: 40px; }
-.w03-frame {
-  width: 70vw; max-width: 1100px; margin: 0 auto; position: relative;
-  aspect-ratio: 16/10; border: 1px solid var(--line); overflow: hidden;
-  background: var(--bg-2); cursor: pointer;
+.w03-gallery-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
-.w03-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s var(--ease); }
-.w03-slide.on { opacity: 1; }
+.w03-gallery {
+  display: flex; gap: 32px;
+  padding: 0 var(--gut);
+  /* Paksa lebar flex agar semua child berada di 1 baris, biarkan GSAP yang geser sumbu X */
+  width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+.w03-item {
+  width: 85vw; max-width: 800px; flex-shrink: 0;
+  cursor: pointer;
+}
+.w03-cover {
+  position: relative; aspect-ratio: 16/10; border: 1px solid var(--line);
+  overflow: hidden; background: var(--bg-2);
+}
+.w03-cover img { transition: transform 0.6s var(--ease); }
+.w03-item:hover .w03-cover img { transform: scale(1.03); }
 .w03-cap {
-  width: 70vw; max-width: 1100px; margin: 20px auto 0;
-  display: flex; justify-content: space-between; align-items: center; padding-inline: 0;
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-top: 16px;
 }
 .w03-name { font-family: var(--font-sans); font-size: 15px; color: var(--ink); }
 .w03-year { font-family: var(--font-sans); font-size: 13px; color: var(--ink-2); }
-.w03-nav { display: flex; gap: 8px; }
-.w03-nav button {
-  width: 40px; height: 40px; background: none; border: 1px solid var(--line);
-  color: var(--ink); cursor: pointer; font-size: 16px;
-  transition: border-color .25s var(--ease);
+
+@media (min-width: 769px) {
+  .w03-item { flex: 0 0 50vw; }
+  .w03-gallery { scroll-snap-type: none; }
 }
-.w03-nav button:hover { border-color: var(--ink); }
-@media (prefers-reduced-motion: reduce) { .w03-slide { transition: none; } }
-@media (max-width: 700px) { .w03-frame, .w03-cap { width: 100%; } }
 
 /* ============================================================
    04 CAPABILITIES ACCORDION

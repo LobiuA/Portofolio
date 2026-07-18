@@ -99,7 +99,7 @@
       "credits": { "platform": "YouTube · Facebook", "tier": "World Championship", "viewers": "—", "organizer": "Moonton" },
       "galleryTitle": "M3 World Championship",
       "images": [
-        { "src": "m3-1", "caption": "Grand Final analyst desk — To The Top" },
+        { "src": "m3-1", "caption": "Grand Final analyst desk — To The Top", "href": "https://www.youtube.com/watch?v=WbhLKN9yN_E&t=2966s" },
         { "src": "m3-2", "caption": "World Championship Quickie segment" },
         { "src": "m3-3", "caption": "Grand Final — ONIC PH player intro" }
       ]

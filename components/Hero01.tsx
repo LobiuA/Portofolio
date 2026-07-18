@@ -9,6 +9,18 @@ export default function Hero01() {
       <div className="h01-meta">
         <span>{kicker}</span>
       </div>
+      <div className="h01-photo" data-reveal>
+        <Image
+          src={headshot}
+          alt="Tri Muhammad Jidan"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 380px"
+          style={{ objectFit: 'cover' }}
+          placeholder={headshotBlur ? 'blur' : 'empty'}
+          blurDataURL={headshotBlur}
+        />
+      </div>
       <div className="h01-grid">
         <div className="h01-main">
           <h1 className="h01-name">
@@ -24,20 +36,6 @@ export default function Hero01() {
               {role.post}
             </span>
             <span className="h01-hint">Scroll ↓</span>
-          </div>
-        </div>
-        <div className="h01-aside" data-reveal>
-          <div className="h01-photo">
-            <Image
-              src={headshot}
-              alt="Tri Muhammad Jidan"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 320px"
-              style={{ objectFit: 'cover' }}
-              placeholder={headshotBlur ? 'blur' : 'empty'}
-              blurDataURL={headshotBlur}
-            />
           </div>
         </div>
       </div>

@@ -1,80 +1,94 @@
 // components/WorkSlider03.tsx
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { siteData, img, blur } from '@/lib/content'
 import { usePortfolio } from '@/components/PortfolioChrome'
 
-const AUTO_MS = 5000
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default function WorkSlider03() {
   const events = siteData.work.events
   const { openLightbox } = usePortfolio()
-  const [i, setI] = useState(0)
-  const hover = useRef(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  const galleryRef = useRef<HTMLDivElement>(null)
 
-  const go = (d: number) => setI((p) => (p + d + events.length) % events.length)
-
-  useEffect(() => {
-    if (events.length < 2) return
+  useLayoutEffect(() => {
+    if (!sectionRef.current || !galleryRef.current || events.length < 2) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = setInterval(() => {
-      if (!hover.current) setI((p) => (p + 1) % events.length)
-    }, AUTO_MS)
-    return () => clearInterval(id)
+
+    const section = sectionRef.current
+    const gallery = galleryRef.current
+
+    const ctx = gsap.context(() => {
+      // Membaca seberapa lebar elemen vs viewport
+      const getScrollAmount = () => {
+        const offset = gallery.scrollWidth - window.innerWidth
+        return offset > 0 ? offset + 80 : 0 // +80px untuk buffer padding
+      }
+
+      const tween = gsap.to(gallery, {
+        x: () => -getScrollAmount(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      })
+    }, section)
+
+    return () => ctx.revert()
   }, [events.length])
 
   if (events.length === 0) return null
-  const cur = events[i]
 
   return (
-    <section className="w03" id="work">
-      <div className="wrap">
+    <section className="w03" id="work" ref={sectionRef}>
+      <div className="wrap" style={{ paddingTop: '80px', paddingBottom: '40px' }}>
         <div className="kicker">Selected Work</div>
       </div>
-      <div
-        className="w03-frame"
-        onMouseEnter={() => (hover.current = true)}
-        onMouseLeave={() => (hover.current = false)}
-        onClick={() => openLightbox(cur.event)}
-        role="button"
-        tabIndex={0}
-        aria-label={`Open ${cur.title} gallery`}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') openLightbox(cur.event)
-        }}
-      >
-        {events.map((ev, idx) => (
-          <div key={ev.event} className={`w03-slide${idx === i ? ' on' : ''}`} aria-hidden={idx !== i}>
-            <Image
-              src={img(ev.cover)}
-              alt={ev.title}
-              fill
-              sizes="70vw"
-              style={{ objectFit: 'cover' }}
-              placeholder={blur(ev.cover) ? 'blur' : 'empty'}
-              blurDataURL={blur(ev.cover)}
-              priority={idx === 0}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="wrap w03-cap">
-        <div>
-          <span className="w03-name">{cur.title}</span>
-          <span className="w03-year"> — {cur.year}</span>
+
+      <div className="w03-gallery-wrap">
+        <div className="w03-gallery" ref={galleryRef}>
+          {events.map((ev, idx) => (
+            <div
+              key={ev.event}
+              className="w03-item"
+              onClick={() => openLightbox(ev.event)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') openLightbox(ev.event)
+              }}
+            >
+              <div className="w03-cover">
+                <Image
+                  src={img(ev.cover)}
+                  alt={ev.title}
+                  fill
+                  sizes="(max-width: 768px) 85vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                  placeholder={blur(ev.cover) ? 'blur' : 'empty'}
+                  blurDataURL={blur(ev.cover)}
+                  priority={idx === 0}
+                />
+              </div>
+              <div className="w03-cap">
+                <span className="w03-name">{ev.title}</span>
+                <span className="w03-year"> — {ev.year}</span>
+              </div>
+            </div>
+          ))}
         </div>
-        {events.length > 1 && (
-          <div className="w03-nav">
-            <button aria-label="Previous" onClick={() => go(-1)}>
-              ←
-            </button>
-            <button aria-label="Next" onClick={() => go(1)}>
-              →
-            </button>
-          </div>
-        )}
       </div>
     </section>
   )
