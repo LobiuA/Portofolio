@@ -1046,3 +1046,21 @@ body::after {
   .f05-row { grid-template-columns: 36px 1fr; }
   .f05-meta { display: none; }
 }
+
+/* ============================================================
+   06 SHOWREEL
+   ============================================================ */
+.s06 { padding-block: clamp(72px, 9vw, 120px); }
+.s06 .kicker { margin-bottom: 40px; }
+.s06-frame {
+  position: relative; aspect-ratio: 16/9; border: 1px solid var(--line);
+  overflow: hidden; background: var(--bg-2);
+}
+.s06-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .7s var(--ease); }
+.s06-slide.on { opacity: 1; }
+.s06-cap {
+  position: absolute; left: 0; bottom: 0; z-index: 3; padding: 18px 24px;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: .04em; color: var(--ink);
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg) 80%, transparent));
+}
+@media (prefers-reduced-motion: reduce) { .s06-slide { transition: none; } }
