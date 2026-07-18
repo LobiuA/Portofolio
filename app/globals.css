@@ -914,3 +914,28 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .overlay-links a { transition: none; opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   01 HERO
+   ============================================================ */
+.h01 {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 var(--gut) 48px; position: relative;
+}
+.h01-meta {
+  position: absolute; top: 88px; right: var(--gut); text-align: right;
+  display: flex; flex-direction: column; gap: 4px;
+  font-family: var(--font-sans); font-size: 13px; line-height: 1.7; color: var(--ink-2);
+}
+.h01-name {
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: clamp(56px, 11vw, 160px); line-height: .95; letter-spacing: -.02em;
+}
+.h01-name span { display: block; }
+.h01-rule { height: 1px; background: var(--line); margin: 28px 0 16px; }
+.h01-sub {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink-2); letter-spacing: .04em;
+}
+.h01-hint { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
+@media (max-width: 700px) { .h01-meta { position: static; text-align: left; margin: 96px 0 auto; } }
